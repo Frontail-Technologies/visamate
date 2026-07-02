@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { LinedBackground } from "@/components/ui/lined-background";
+
 const points = [
   {
     title: "Honest and practical guidance",
@@ -68,13 +70,15 @@ export function WhyChooseSection() {
               key={title}
               className="overflow-hidden rounded-lg border border-border bg-card/90 shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-md"
             >
-              <div className="flex aspect-video items-center justify-center  p-2">
+              <div className="relative flex aspect-video items-center justify-center overflow-hidden  p-2">
+                <LinedBackground />
                 <Image
                   src={image}
                   alt={title}
+                  unoptimized
                   width={420}
                   height={315}
-                  className="h-full w-full object-contain"
+                  className="relative z-10 h-full w-full object-contain"
                 />
               </div>
 

@@ -22,7 +22,7 @@ const navLinks = [
   { label: "Services", href: "/#services", Icon: Compass },
   { label: "Process", href: "/#process", Icon: Route },
   { label: "Countries", href: "/#countries", Icon: Globe2 },
-  { label: "Guides", href: "/guides", Icon: Globe2 },
+  { label: "Blog", href: "/blog", Icon: Globe2 },
   { label: "Reviews", href: "/#reviews", Icon: BadgeCheck },
 ];
 

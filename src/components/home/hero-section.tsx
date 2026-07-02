@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { DottedBackground } from "@/components/ui/dotted-background";
 
 const heroContent = {
   mobileBadge: "Visa Consultation • Interview Prep",
@@ -38,6 +39,7 @@ export function HeroSection() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-background/75" />
+      <DottedBackground className="z-[1]" />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Plane } from "lucide-react";
+import { DottedBackground } from "@/components/ui/dotted-background";
 
 const steps = [
   {
@@ -24,7 +24,8 @@ const steps = [
     number: "04",
     title: "Form Filling & Appointment",
     description: "We assist with application forms and booking appointments.",
-    image: "/images/illustrations/process/Form%20Filling%20%26%20Appointment.png",
+    image:
+      "/images/illustrations/process/Form%20Filling%20%26%20Appointment.png",
   },
   {
     number: "05",
@@ -48,8 +49,14 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="bg-background py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="process"
+      className="relative overflow-hidden bg-background py-20 lg:py-24"
+    >
+      <div className="pointer-events-none absolute right-0 top-24 size-72 rounded-full bg-primary opacity-10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-20 left-0 size-72 rounded-full bg-accent opacity-10 blur-3xl" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
@@ -66,51 +73,49 @@ export function ProcessSection() {
 
         {/* Steps grid */}
         <div className="relative mt-12">
-          <div className="relative z-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="relative z-10 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(({ number, title, description, image }) => (
               <article
                 key={number}
-                className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-md"
+                className="group relative flex min-h-[178px] flex-col overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-md"
               >
-                <span className="absolute left-5 top-5 z-10 flex size-9 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground shadow-sm">
-                  {Number(number)}
+                <DottedBackground className="opacity-50 [mask-image:radial-gradient(ellipse_at_top_right,black_16%,transparent_76%)]" />
+                <span className="absolute left-5 top-5 z-20 text-2xl font-extrabold text-primary">
+                  {number}
                 </span>
-
-                <div className="mb-5 flex h-28 items-center justify-center rounded-lg border border-border bg-background/70 px-2">
-                  <Image
-                    src={image}
-                    alt={`${title} illustration`}
-                    width={150}
-                    height={120}
-                    className="h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="mt-1 text-base font-semibold text-foreground">
+                {/* <Image
+                  src={image}
+                  alt={`${title} illustration`}
+                  width={180}
+                  height={180}
+                  className="pointer-events-none absolute -right-5 -top-5 z-0 h-auto w-32 object-contain opacity-15 transition-transform duration-300 group-hover:scale-105 sm:w-36"
+                /> */}
+                <h3 className="relative z-10 mt-14 text-base font-semibold text-foreground">
                   {title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                <p className="relative z-10 mt-2 text-sm leading-6 text-muted-foreground">
                   {description}
                 </p>
               </article>
             ))}
 
-            <article className="group relative overflow-hidden rounded-lg border border-primary/20 bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md">
-              <span className="absolute left-5 top-5 z-10 flex size-9 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground shadow-sm">
-                8
-              </span>
-
-              <div className="mb-5 flex h-28 items-center justify-center rounded-lg border border-border bg-background/70 px-4 text-center">
-                <Plane className="size-12 -rotate-12 text-primary" />
+            <article className="group relative flex min-h-[178px] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-md">
+              <DottedBackground className="opacity-60 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_76%)]" />
+              <div className="relative z-10">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  Need guidance?
+                </p>
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Ready to Start?
+                </h3>
+                <p className=" text-sm leading-6 text-muted-foreground">
+                  Book your consultation and get clear guidance for your next
+                  step.
+                </p>
               </div>
-              <h3 className="mt-1 text-base font-semibold text-foreground">
-                Ready to Start?
-              </h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Book your consultation and get clear guidance for your next step.
-              </p>
               <a
                 href="#contact"
-                className="mt-5 inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                className="relative z-10 mt-2 inline-flex w-fit items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Book Consultation
               </a>

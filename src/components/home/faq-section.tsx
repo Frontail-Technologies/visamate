@@ -1,8 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { Minus, Plus } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 const categories = ["General", "Documents", "Interview", "Process"];
 
@@ -58,95 +64,75 @@ const faqs = [
 ];
 
 export function FaqSection() {
-  const [openIndex, setOpenIndex] = useState(0);
-  const [activeCategory, setActiveCategory] = useState("General");
-  const filteredFaqs = faqs.filter((faq) => faq.category === activeCategory);
-
   return (
     <section id="faq" className="bg-background py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:gap-14">
-          <div>
-            <span className="inline-flex rounded-lg border border-border bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
-              FAQs
-            </span>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+            Frequently Asked{" "}
+            <span className="text-primary">Questions</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+            Quick answers before you start your visa consultation.
+          </p>
+        </div>
 
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Frequently asked question
-            </h2>
-
-            <div className="mt-8 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3 lg:grid lg:grid-cols-1 lg:gap-3">
-              {categories.map((category) => {
-                const isActive = category === activeCategory;
-
-                return (
-                  <button
-                    key={category}
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => {
-                      setActiveCategory(category);
-                      setOpenIndex(0);
-                    }}
-                    className={cn(
-                      "min-w-0 rounded-lg border px-3 py-2 text-center text-sm font-semibold leading-tight whitespace-normal transition-colors sm:px-5 sm:text-left lg:min-w-0",
-                      isActive
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-card text-muted-foreground hover:border-primary/20 hover:text-primary",
-                    )}
-                  >
-                    {category}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
-            <p className="mb-6 max-w-2xl text-sm leading-7 text-muted-foreground">
-              Here are common questions about Visa Mate consultation, document
-              support, interview preparation, and the visa process.
+        <div className="mt-12 grid gap-6 lg:grid-cols-[0.4fr_0.6fr] lg:items-start">
+          <aside className="rounded-lg border border-border bg-card p-6 shadow-sm lg:sticky lg:top-24">
+            <h3 className="text-2xl font-bold tracking-tight text-foreground">
+              Still curious?
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Send us your visa question and we&apos;ll point you in the right
+              direction.
             </p>
+            <Button asChild className="mt-6">
+              <a href="#contact">
+                Contact Us
+                <ArrowRight className="size-4" />
+              </a>
+            </Button>
+          </aside>
 
-            <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
-              {filteredFaqs.map(({ question, answer }, index) => {
-                const isOpen = index === openIndex;
+          <div className="space-y-5">
+            {categories.map((category) => {
+              const categoryFaqs = faqs.filter(
+                (faq) => faq.category === category,
+              );
 
-                return (
-                  <div
-                    key={question}
-                    className="border-b border-border last:border-b-0"
+              return (
+                <article
+                  key={category}
+                  className="overflow-hidden rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6"
+                >
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                    {category}
+                  </p>
+
+                  <Accordion
+                    type="single"
+                    collapsible
+                    defaultValue={`${category}-0`}
+                    className="mt-5"
                   >
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
-                    >
-                      <span className="text-sm font-semibold text-foreground">
-                        {question}
-                      </span>
-                      {isOpen ? (
-                        <Minus className="size-4 shrink-0 text-primary" />
-                      ) : (
-                        <Plus className="size-4 shrink-0 text-muted-foreground" />
-                      )}
-                    </button>
-
-                    <div
-                      className={cn(
-                        "overflow-hidden transition-all duration-300",
-                        isOpen ? "max-h-56" : "max-h-0",
-                      )}
-                    >
-                      <p className="px-5 pb-5 text-sm leading-7 text-muted-foreground">
-                        {answer}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                    {categoryFaqs.map(({ question, answer }, index) => (
+                      <AccordionItem
+                        key={question}
+                        value={`${category}-${index}`}
+                        className="border-border"
+                      >
+                        <AccordionTrigger className="gap-4 text-left text-sm font-bold text-foreground hover:no-underline [&>svg]:rounded-lg [&>svg]:border [&>svg]:border-border [&>svg]:p-1 [&>svg]:size-8">
+                          {question}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-sm leading-7 text-muted-foreground">
+                          {answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

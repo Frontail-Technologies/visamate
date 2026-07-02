@@ -48,7 +48,7 @@ const services = [
 const quickLinks = [
   { label: "How It Works", href: "/#process" },
   { label: "Why Choose Us", href: "/#why-choose" },
-  { label: "Guides", href: "/guides" },
+  { label: "Blog", href: "/blog" },
   { label: "Client Reviews", href: "/#reviews" },
   { label: "FAQ", href: "/#faq" },
 ];

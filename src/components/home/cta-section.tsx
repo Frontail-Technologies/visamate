@@ -8,7 +8,7 @@ export function CtaSection() {
       <div className="pointer-events-none absolute bottom-0 left-0 size-80 rounded-full bg-accent opacity-10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-lg border border-border bg-card/80 shadow-sm backdrop-blur-md">
+        <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm backdrop-blur-md">
           <div className="grid items-center gap-8 p-6 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
             <div className="text-left">
               <p className="text-sm font-semibold uppercase tracking-widest text-primary">
