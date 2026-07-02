@@ -1,11 +1,4 @@
-import {
-  Globe,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Send,
-} from "lucide-react";
+import { Globe, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 
 const mapUrl = "https://www.google.com/maps?q=Visa%20Mate&output=embed";
 
@@ -58,17 +51,17 @@ export function ContactSection() {
               We are here to help you understand the next step.
             </p>
 
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            <div className="mt-8 grid gap-5 grid-cols-2">
               {contactItems.map(({ label, value, Icon }) => (
-                <div key={label} className="flex items-center gap-3">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                    <Icon className="size-4" />
+                <div key={label} className="flex  items-center gap-3">
+                  <span className="flex md:size-10 size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                    <Icon className="md:size-4 size-3" />
                   </span>
                   <div>
                     <h3 className="text-sm font-semibold text-foreground">
                       {label}
                     </h3>
-                    <p className="mt-0.5 text-sm text-muted-foreground">
+                    <p className="mt-0.5 text-xs text-muted-foreground">
                       {value}
                     </p>
                   </div>
@@ -87,7 +80,7 @@ export function ContactSection() {
                       key={label}
                       href={href}
                       aria-label={label}
-                    className="flex size-9 items-center justify-center rounded-lg border border-border bg-card text-foreground transition-colors hover:border-primary/25 hover:text-primary"
+                      className="flex size-9 items-center justify-center rounded-lg border border-border bg-card text-foreground transition-colors hover:border-primary/25 hover:text-primary"
                     >
                       <Icon className="size-4" />
                     </a>
