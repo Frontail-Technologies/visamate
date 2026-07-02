@@ -28,7 +28,7 @@ const trustCards = [
 export function TrustSection() {
   return (
     <section className="bg-background px-6 py-16 sm:px-10 lg:px-16 lg:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Clear Guidance. Better Preparation. Confident Journey.
@@ -44,9 +44,9 @@ export function TrustSection() {
           {trustCards.map(({ title, description, Icon }) => (
             <article
               key={title}
-              className="rounded-2xl border border-border bg-card p-6 shadow-sm"
+              className="rounded-lg border border-border bg-card p-6 shadow-sm"
             >
-              <div className="mb-5 flex size-11 items-center justify-center rounded-xl bg-accent text-primary">
+              <div className="mb-5 flex size-11 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                 <Icon className="size-5" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">{title}</h3>

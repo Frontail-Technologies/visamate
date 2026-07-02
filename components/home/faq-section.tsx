@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const categories = ["General", "Documents", "Interview", "Process"];
 
 const faqs = [
   {
     question: "What exactly does Visa Mate do?",
     answer:
-      "Visa Mate provides visa consultation services. We help you understand the visa process, review your profile, prepare your document checklist, guide you through form filling, and help you prepare for your visa interview. We do not guarantee visa approvals — we support your preparation.",
+      "Visa Mate provides visa consultation services. We help you understand the visa process, review your profile, prepare your document checklist, guide you through form filling, and help you prepare for your visa interview. We do not guarantee visa approvals, we support your preparation.",
   },
   {
     question: "Do you guarantee that my visa will be approved?",
@@ -47,99 +49,91 @@ const faqs = [
   },
 ];
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className={cn(
-      "overflow-hidden border-b border-border last:border-b-0 transition-colors duration-200",
-      open && "border-primary/20"
-    )}>
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-start justify-between gap-4 py-4 text-left sm:py-5"
-        aria-expanded={open}
-      >
-        <span className={cn(
-          "text-sm font-semibold leading-snug transition-colors duration-200 sm:text-base",
-          open ? "text-primary" : "text-foreground"
-        )}>
-          {question}
-        </span>
-        <ChevronDown
-          className={cn(
-            "mt-0.5 size-4 shrink-0 text-muted-foreground transition-transform duration-200",
-            open && "rotate-180 text-primary"
-          )}
-        />
-      </button>
-      <div
-        className={cn(
-          "overflow-hidden transition-all duration-300",
-          open ? "max-h-64 pb-4" : "max-h-0"
-        )}
-      >
-        <p className="text-sm leading-7 text-muted-foreground">{answer}</p>
-      </div>
-    </div>
-  );
-}
-
 export function FaqSection() {
+  const [openIndex, setOpenIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("General");
+
   return (
-    <section
-      id="faq"
-      className="relative overflow-hidden bg-background py-20 sm:py-24 lg:py-28"
-    >
-      {/* Background: fine square grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-      <div className="pointer-events-none absolute left-0 bottom-0 size-[350px] rounded-full bg-accent/6 blur-3xl" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-
-          {/* Left: sticky header */}
-          <div className="lg:sticky lg:top-28">
-            <span className="inline-block rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
+    <section id="faq" className="bg-background py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:gap-14">
+          <div>
+            <span className="inline-flex rounded-lg border border-border bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
               FAQs
             </span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Frequently Asked{" "}
-              <span className="text-primary">Questions</span>
-            </h2>
-            <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
-              Find answers to common questions about visa process, documents, and consultation.
-            </p>
 
-            <div className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-sm">
-              <p className="text-sm font-bold text-foreground">
-                Still have questions?
-              </p>
-              <p className="mt-1.5 text-sm text-muted-foreground">
-                Our team is happy to help with any specific queries about your visa journey.
-              </p>
-              <a
-                href="#contact"
-                className="mt-4 inline-flex items-center rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
-              >
-                Contact Us
-              </a>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Frequently asked question
+            </h2>
+
+            <div className="mt-8 flex gap-3 overflow-x-auto pb-2 lg:grid lg:gap-3 lg:overflow-visible lg:pb-0">
+              {categories.map((category) => {
+                const isActive = category === activeCategory;
+
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setActiveCategory(category)}
+                    className={cn(
+                      "min-w-36 rounded-lg border px-5 py-2 text-left text-sm font-semibold transition-colors lg:min-w-0",
+                      isActive
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card text-muted-foreground hover:border-primary/20 hover:text-primary",
+                    )}
+                  >
+                    {category}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Right: FAQ accordion */}
-          <div className="divide-y-0 rounded-2xl border border-border bg-card px-6 py-2 shadow-sm">
-            {faqs.map((faq) => (
-              <FaqItem key={faq.question} {...faq} />
-            ))}
+          <div>
+            <p className="mb-6 max-w-2xl text-sm leading-7 text-muted-foreground">
+              Here are common questions about Visa Mate consultation, document
+              support, interview preparation, and the visa process.
+            </p>
+
+            <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+              {faqs.map(({ question, answer }, index) => {
+                const isOpen = index === openIndex;
+
+                return (
+                  <div
+                    key={question}
+                    className="border-b border-border last:border-b-0"
+                  >
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                      className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
+                    >
+                      <span className="text-sm font-semibold text-foreground">
+                        {question}
+                      </span>
+                      {isOpen ? (
+                        <Minus className="size-4 shrink-0 text-primary" />
+                      ) : (
+                        <Plus className="size-4 shrink-0 text-muted-foreground" />
+                      )}
+                    </button>
+
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-300",
+                        isOpen ? "max-h-56" : "max-h-0",
+                      )}
+                    >
+                      <p className="px-5 pb-5 text-sm leading-7 text-muted-foreground">
+                        {answer}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

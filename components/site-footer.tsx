@@ -38,20 +38,19 @@ function FacebookIcon({ className }: { className?: string }) {
 }
 
 const services = [
-  { label: "Tourist Visa", Icon: Plane, href: "#services" },
-  { label: "Business Visa", Icon: Briefcase, href: "#services" },
-  { label: "Student Visa", Icon: GraduationCap, href: "#services" },
-  { label: "Work Visa", Icon: Wrench, href: "#services" },
-  { label: "Family Visa", Icon: Users, href: "#services" },
+  { label: "Tourist Visa", Icon: Plane, href: "/#services" },
+  { label: "Business Visa", Icon: Briefcase, href: "/#services" },
+  { label: "Student Visa", Icon: GraduationCap, href: "/#services" },
+  { label: "Work Visa", Icon: Wrench, href: "/#services" },
+  { label: "Family Visa", Icon: Users, href: "/#services" },
 ];
 
 const quickLinks = [
-  { label: "How It Works", href: "#process" },
-  { label: "Why Choose Us", href: "#why-choose" },
-  { label: "Video Guides", href: "#guides" },
-  { label: "Blog & Tips", href: "#blogs" },
-  { label: "Client Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
+  { label: "How It Works", href: "/#process" },
+  { label: "Why Choose Us", href: "/#why-choose" },
+  { label: "Guides", href: "/guides" },
+  { label: "Client Reviews", href: "/#reviews" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 const contactInfo = [
@@ -81,7 +80,7 @@ export function SiteFooter() {
 
           {/* Brand column */}
           <div>
-            <a href="#top" className="inline-block">
+            <a href="/" className="inline-block">
               <Image
                 src="/images/logo.png"
                 alt="Visa Mate"
@@ -104,7 +103,7 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`flex size-9 items-center justify-center rounded-full border border-border bg-muted/50 text-muted-foreground transition-all duration-200 ${color}`}
+                  className={`flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 text-muted-foreground transition-all duration-200 ${color}`}
                 >
                   <Icon className="size-4" />
                 </a>
@@ -116,7 +115,7 @@ export function SiteFooter() {
               href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20visa%20consultation."
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2.5 text-sm font-bold text-foreground transition-all hover:border-primary/25 hover:bg-primary/5 hover:text-primary"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg border border-border bg-muted/60 px-4 py-2.5 text-sm font-bold text-foreground transition-all hover:border-primary/25 hover:bg-primary/5 hover:text-primary"
             >
               <WhatsAppIcon className="size-4 text-[#25D366]" />
               Book on WhatsApp
@@ -184,7 +183,7 @@ export function SiteFooter() {
             </ul>
 
             {/* Hours note */}
-            <div className="mt-6 rounded-xl border border-border bg-muted/40 px-4 py-3">
+            <div className="mt-6 rounded-lg border border-border bg-muted/40 px-4 py-3">
               <p className="text-xs font-semibold text-foreground">Working Hours</p>
               <p className="mt-1 text-xs text-muted-foreground">Mon – Fri: 9am – 7pm</p>
               <p className="text-xs text-muted-foreground">Sat: 10am – 5pm</p>

@@ -1,36 +1,41 @@
-import {
-  CheckCircle2,
-  MessageCircle,
-  ShieldOff,
-  UserCheck,
-  FileCheck,
-  BookOpen,
-} from "lucide-react";
+import Image from "next/image";
 
 const points = [
   {
-    text: "Honest and practical guidance",
-    Icon: CheckCircle2,
+    title: "Honest and practical guidance",
+    description:
+      "Clear advice focused on preparation, process clarity, and realistic next steps.",
+    image: "/images/illustrations/features/Honest and practical guidance.png",
   },
   {
-    text: "Clear document support",
-    Icon: FileCheck,
+    title: "Clear document support",
+    description:
+      "Simple document planning so your files stay organized and easier to review.",
+    image: "/images/illustrations/features/Clear document support.png",
   },
   {
-    text: "Interview preparation help",
-    Icon: BookOpen,
+    title: "Interview preparation help",
+    description:
+      "Practice common questions and learn how to answer with better confidence.",
+    image: "/images/illustrations/features/Interview preparation help.png",
   },
   {
-    text: "Personalized consultation",
-    Icon: UserCheck,
+    title: "Personalized consultation",
+    description:
+      "Guidance shaped around your travel purpose, profile, and visa category.",
+    image: "/images/illustrations/features/Personalized consultation.png",
   },
   {
-    text: "Easy communication support",
-    Icon: MessageCircle,
+    title: "Easy communication support",
+    description:
+      "Stay informed with practical support throughout the preparation journey.",
+    image: "/images/illustrations/features/Easy communication support.png",
   },
   {
-    text: "No false promises or guarantees",
-    Icon: ShieldOff,
+    title: "No false promises or guarantees",
+    description:
+      "We keep the process honest and preparation-focused without approval claims.",
+    image: "/images/illustrations/features/No false promises or guarantees.png",
   },
 ];
 
@@ -38,103 +43,51 @@ export function WhyChooseSection() {
   return (
     <section
       id="why-choose"
-      className="relative overflow-hidden bg-muted/40 py-20 sm:py-24 lg:py-32"
+      className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
     >
-      {/* Subtle dot grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:radial-gradient(var(--border)_1px,transparent_1px)] [background-size:24px_24px]" />
-      <div className="pointer-events-none absolute left-0 top-0 size-[400px] rounded-full bg-accent/6 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 size-[400px] rounded-full bg-primary/6 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-0 size-80 rounded-full bg-primary opacity-10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 size-80 rounded-full bg-accent opacity-10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          {/* Left: text block */}
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/8 px-4 py-1.5 text-xs font-bold tracking-[0.15em] text-accent uppercase">
-              Why Choose Visa Mate
-            </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">
+            Why Choose Visa Mate
+          </p>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Guidance That Makes Your Visa Process Simple
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            We focus on clarity, honest guidance, and step-by-step support so
+            you can prepare better without confusion.
+          </p>
+        </div>
 
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Guidance That Makes Your{" "}
-              <span className="text-primary">Visa Process Simple</span>
-            </h2>
-
-            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-              We focus on clarity, honest guidance, and step-by-step support so
-              you can prepare better without confusion.
-            </p>
-
-            {/* Feature points grid */}
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              {points.map(({ text, Icon }) => (
-                <div
-                  key={text}
-                  className="flex items-start gap-3 rounded-xl border border-border bg-card px-4 py-3.5 shadow-sm transition-shadow duration-200 hover:shadow-md"
-                >
-                  <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                    <Icon className="size-4" />
-                  </span>
-                  <span className="text-sm font-medium leading-snug text-foreground">
-                    {text}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: decorative accent card */}
-          <div className="flex items-center justify-center">
-            <div className="relative w-full max-w-sm">
-              {/* Background glow card */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-accent/10 via-transparent to-primary/10 blur-xl" />
-
-              <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
-                {/* Top accent strip */}
-                <div className="h-1.5 w-full bg-gradient-to-r from-accent via-primary to-accent/60" />
-
-                <div className="p-8">
-                  {/* Big number stat */}
-                  <div className="flex items-end gap-2">
-                    <span className="text-7xl font-extrabold leading-none tracking-tight text-primary">
-                      7
-                    </span>
-                    <span className="mb-2 text-base font-semibold text-muted-foreground">
-                      steps
-                    </span>
-                  </div>
-                  <p className="mt-2 text-lg font-semibold text-foreground">
-                    Clear Journey from Start to Finish
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    From consultation to final visa decision — we're with you at
-                    every stage.
-                  </p>
-
-                  <div className="mt-8 space-y-3">
-                    {[
-                      "Understand your profile",
-                      "Prepare required documents",
-                      "Practice interview answers",
-                    ].map((item) => (
-                      <div key={item} className="flex items-center gap-2.5">
-                        <div className="size-4 shrink-0 rounded-full bg-accent/15 p-0.5">
-                          <div className="size-full rounded-full bg-accent" />
-                        </div>
-                        <span className="text-sm text-muted-foreground">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 rounded-xl bg-primary/8 px-4 py-3">
-                    <p className="text-xs font-medium text-primary">
-                      "Simple guidance. Honest process. Better preparation."
-                    </p>
-                  </div>
-                </div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {points.map(({ title, description, image }) => (
+            <article
+              key={title}
+              className="overflow-hidden rounded-lg border border-border bg-card/90 shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-md"
+            >
+              <div className="flex aspect-video items-center justify-center  p-2">
+                <Image
+                  src={image}
+                  alt={title}
+                  width={420}
+                  height={315}
+                  className="h-full w-full object-contain"
+                />
               </div>
-            </div>
-          </div>
+
+              <div className="px-4 pb-4">
+                <h3 className="text-lg font-semibold text-foreground">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {description}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

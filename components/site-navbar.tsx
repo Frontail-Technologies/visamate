@@ -19,11 +19,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Services", href: "#services", Icon: Compass },
-  { label: "Process", href: "#process", Icon: Route },
-  { label: "Countries", href: "#countries", Icon: Globe2 },
-  { label: "Guides ", href: "#Guides ", Icon: Globe2 },
-  { label: "Reviews", href: "#reviews", Icon: BadgeCheck },
+  { label: "Services", href: "/#services", Icon: Compass },
+  { label: "Process", href: "/#process", Icon: Route },
+  { label: "Countries", href: "/#countries", Icon: Globe2 },
+  { label: "Guides", href: "/guides", Icon: Globe2 },
+  { label: "Reviews", href: "/#reviews", Icon: BadgeCheck },
 ];
 
 export function SiteNavbar() {
@@ -31,9 +31,9 @@ export function SiteNavbar() {
 
   return (
     <header className="fixed z-30 w-full px-4 py-4 sm:px-6 left-0 top-0 lg:px-8 lg:py-6">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 border-b border-border bg-background/95 pb-4 backdrop-blur-xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-2xl lg:shadow-primary/10">
+      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 border-b border-border bg-background/95 pb-4 backdrop-blur-xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-2xl lg:shadow-primary/10">
         <a
-          href="#top"
+          href="/"
           className="flex min-w-0 items-center"
           aria-label="VisaMate home"
         >
@@ -52,26 +52,26 @@ export function SiteNavbar() {
             <a
               key={link.href}
               href={link.href}
-              className="group relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-300 hover:text-foreground"
+              className="group relative flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               <link.Icon className="size-4 text-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" />
               {link.label}
               <span className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-primary via-accent to-transparent transition-transform duration-300 group-hover:scale-x-100" />
-              <span className="absolute inset-0 -z-10 rounded-md bg-secondary/0 transition-colors duration-300 group-hover:bg-secondary/70" />
+              <span className="absolute inset-0 -z-10 rounded-lg bg-secondary/0 transition-colors duration-300 group-hover:bg-secondary/70" />
             </a>
           ))}
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
           <Button variant="outline" size="sm" asChild>
-            <a href="#contact">
+            <a href="/#contact">
               <MessageCircleQuestion className="size-4 text-accent" />
               Contact
             </a>
           </Button>
 
           <Button size="sm" asChild>
-            <a href="#consultation">
+            <a href="/#consultation">
               Apply now
               <PlaneTakeoff className="size-4" />
             </a>
@@ -80,7 +80,7 @@ export function SiteNavbar() {
 
         <div className="ml-auto flex items-center gap-2 lg:hidden">
           <Button size="sm" asChild>
-            <a href="#consultation">
+            <a href="/#consultation">
               Apply
               <PlaneTakeoff className="size-4" />
             </a>
@@ -128,7 +128,7 @@ export function SiteNavbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="group flex items-center justify-between rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="group flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             >
               <span className="flex items-center gap-2">
                 <link.Icon className="size-4 text-accent transition-transform group-hover:scale-110" />
@@ -141,7 +141,7 @@ export function SiteNavbar() {
 
         <div className="mt-1.5 grid grid-cols-2 gap-2 border-t border-border pt-1.5">
           <Button variant="outline" size="sm" asChild>
-            <a href="#contact" onClick={() => setOpen(false)}>
+            <a href="/#contact" onClick={() => setOpen(false)}>
               <MessageCircleQuestion className="size-4 text-accent" />
               Contact
             </a>

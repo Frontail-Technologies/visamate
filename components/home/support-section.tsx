@@ -59,9 +59,9 @@ export function SupportSection() {
           {supportCards.map(({ number, title, description, Icon }) => (
             <article
               key={title}
-              className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              className="rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
-              <div className="mb-4 flex size-10 items-center justify-center rounded-xl border border-border bg-background">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg border border-border bg-background">
                 <Icon className="size-4 text-primary" />
               </div>
               <span className="text-xs font-semibold text-muted-foreground/50">{number}</span>

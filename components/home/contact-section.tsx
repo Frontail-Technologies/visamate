@@ -1,110 +1,209 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+  Globe,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Send,
+} from "lucide-react";
+
+const mapUrl = "https://www.google.com/maps?q=Visa%20Mate&output=embed";
+
+const contactItems = [
+  {
+    label: "Phone",
+    value: "+91 98765 43210",
+    Icon: Phone,
+  },
+  {
+    label: "Email",
+    value: "hello@visamate.com",
+    Icon: Mail,
+  },
+  {
+    label: "Address",
+    value: "New Delhi, India",
+    Icon: MapPin,
+  },
+  {
+    label: "WhatsApp",
+    value: "Message us",
+    Icon: MessageCircle,
+  },
+];
+
+const socialLinks = [
+  { label: "WhatsApp", href: "#", Icon: MessageCircle },
+  { label: "Website", href: "#", Icon: Globe },
+  { label: "Telegram", href: "#", Icon: Send },
+];
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-background py-20 lg:py-24 border-t border-border/50">
+    <section
+      id="contact"
+      className="border-t border-border/50 bg-background py-16 lg:py-20"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Centered Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Contact Us
-          </p>
-          <h2 className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Let&apos;s Start Your Visa Process
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
-            Talk to our team and get clear guidance for your visa application. We are here to help you every step of the way.
-          </p>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+              Contact Us
+            </p>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+              Get In Touch
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
+              Talk to our team and get clear guidance for your visa application.
+              We are here to help you understand the next step.
+            </p>
 
-        <div className="mx-auto mt-14 grid max-w-5xl gap-10 lg:grid-cols-2">
-          {/* Contact info cards */}
-          <div className="flex flex-col justify-center gap-4">
-            <div className="flex items-center gap-5 rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                <Phone className="size-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Call or WhatsApp</h3>
-                <p className="mt-1 text-lg font-semibold text-foreground">+91 98765 43210</p>
-              </div>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              {contactItems.map(({ label, value, Icon }) => (
+                <div key={label} className="flex items-center gap-3">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                    <Icon className="size-4" />
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-foreground">
+                      {label}
+                    </h3>
+                    <p className="mt-0.5 text-sm text-muted-foreground">
+                      {value}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-            
-            <div className="flex items-center gap-5 rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                <Mail className="size-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Email us</h3>
-                <p className="mt-1 text-lg font-semibold text-foreground">hello@visamate.com</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-5 rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                <MapPin className="size-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Office</h3>
-                <p className="mt-1 text-base font-semibold text-foreground">123 Visa Street, New Delhi, India</p>
+
+            <div className="mt-9 border-t border-border pt-6">
+              <div className="flex items-center gap-4">
+                <p className="text-sm font-semibold text-foreground">
+                  Social Media
+                </p>
+                <div className="flex items-center gap-2">
+                  {socialLinks.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                    className="flex size-9 items-center justify-center rounded-lg border border-border bg-card text-foreground transition-colors hover:border-primary/25 hover:text-primary"
+                    >
+                      <Icon className="size-4" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Clean contact form */}
-          <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <h3 className="text-xl font-semibold text-foreground mb-6">Send us a message</h3>
+          <div className="rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6">
             <form className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-semibold text-foreground"
+                  >
+                    Email
+                  </label>
                   <input
-                    id="name"
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="phone" className="text-sm font-medium text-foreground">Phone</label>
+                  <label
+                    htmlFor="name"
+                    className="text-xs font-semibold text-foreground"
+                  >
+                    Name
+                  </label>
                   <input
-                    id="phone"
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    id="name"
+                    type="text"
+                    placeholder="Name"
+                    className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
                   />
                 </div>
               </div>
+
               <div className="space-y-1.5">
-                <label htmlFor="service" className="text-sm font-medium text-foreground">Visa Type</label>
-                <select
-                  id="service"
-                  className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                <label
+                  htmlFor="phone"
+                  className="text-xs font-semibold text-foreground"
                 >
-                  <option value="">Select visa type...</option>
-                  <option value="tourist">Tourist Visa</option>
-                  <option value="student">Student Visa</option>
-                  <option value="business">Business Visa</option>
-                  <option value="work">Work Visa</option>
-                </select>
-              </div>
-              <div className="space-y-1.5">
-                <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
-                <textarea
-                  id="message"
-                  rows={3}
-                  placeholder="Tell us about your requirements..."
-                  className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  Phone
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  placeholder="Phone"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
                 />
               </div>
+
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="service-type"
+                  className="text-xs font-semibold text-foreground"
+                >
+                  Service Type
+                </label>
+                <select
+                  id="service-type"
+                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select service type
+                  </option>
+                  <option value="tourist">Tourist Visa</option>
+                  <option value="business">Business Visa</option>
+                  <option value="student">Student Visa</option>
+                  <option value="work">Work Visa</option>
+                  <option value="family">Family / Visit Visa</option>
+                  <option value="documents">Document Support</option>
+                  <option value="interview">Interview Preparation</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="message"
+                  className="text-xs font-semibold text-foreground"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  placeholder="Message"
+                  className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
+                />
+              </div>
+
               <button
                 type="button"
-                className="w-full rounded-xl bg-primary px-4 py-3.5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+                className="inline-flex rounded-lg bg-primary px-6 py-3 text-xs font-bold uppercase tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Send Message
+                Submit Button
               </button>
             </form>
           </div>
+        </div>
+
+        <div className="mt-12 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+          <iframe
+            title="Visa Mate location on Google Maps"
+            src={mapUrl}
+            className="h-72 w-full border-0 sm:h-80 lg:h-96"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
       </div>
     </section>
