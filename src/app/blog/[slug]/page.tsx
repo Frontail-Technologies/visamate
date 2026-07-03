@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Back to Blog
             </Link>
 
-            <div className="rounded-lg border border-border bg-card p-5 shadow-sm md:p-10">
+            <div className="rounded-lg border border-border bg-card p-5 shadow-xs md:p-10">
               <header className="border-b border-border pb-8">
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">
                   {post.category}
@@ -171,7 +171,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       fill
                       priority
                       sizes="(min-width: 1024px) 960px, 100vw"
-                      className="object-contain p-8"
+                      className="object-cover"
                     />
                   </div>
                   {post.thumbnail.caption && (
@@ -215,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <Link
                       key={related.slug}
                       href={`/blog/${related.slug}`}
-                      className="group overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-md"
+                      className="group overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-all hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs"
                     >
                       {related.thumbnail && (
                         <div className="relative aspect-[16/9] border-b border-border bg-background">
@@ -224,7 +224,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             alt={related.thumbnail.alt}
                             fill
                             sizes="(min-width: 640px) 480px, 100vw"
-                            className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
                       )}

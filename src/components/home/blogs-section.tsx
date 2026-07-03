@@ -12,11 +12,8 @@ export async function BlogsSection() {
     <section id="blogs" className="bg-background py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Visa Blog
-          </p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Practical Visa Blogs For Every Step
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Practical Visa <span className="text-primary">Blogs</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
             Simple blogs to help you understand documents, interviews, and
@@ -28,16 +25,16 @@ export async function BlogsSection() {
           {featuredPosts.map((post) => (
             <article
               key={post.slug}
-              className="group overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-md"
+              className="group overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs"
             >
               {post.thumbnail && (
-                <div className="relative h-56 overflow-hidden border-b border-border bg-background">
+                <div className="relative aspect-video overflow-hidden border-b border-border bg-background">
                   <Image
                     src={post.thumbnail.url}
                     alt={post.thumbnail.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain p-8 transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               )}
@@ -67,7 +64,7 @@ export async function BlogsSection() {
         <div className="mt-10 flex justify-center">
           <a
             href="/blog"
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-3 text-sm font-bold text-foreground shadow-sm transition-colors hover:border-primary/25 hover:text-primary"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-3 text-sm font-bold text-foreground shadow-xs transition-colors hover:border-primary/25 hover:text-primary"
           >
             View All Blogs
             <ArrowRight className="size-4" />

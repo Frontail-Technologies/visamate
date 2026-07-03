@@ -4,19 +4,12 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 export function CtaSection() {
   return (
     <section className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24">
-      <div className="pointer-events-none absolute right-0 top-0 size-80 rounded-full bg-primary opacity-10 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-0 size-80 rounded-full bg-accent opacity-10 blur-3xl" />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm backdrop-blur-md">
+        <div className="overflow-hidden rounded-lg border border-border bg-card shadow-xs backdrop-blur-md">
           <div className="grid items-center gap-8 p-6 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
             <div className="text-left">
-              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-                Start Today
-              </p>
-
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                Ready to Transform Your{" "}
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                Ready to Start Your{" "}
                 <span className="text-primary">Visa Journey?</span>
               </h2>
 
@@ -29,7 +22,7 @@ export function CtaSection() {
               <div className="mt-8">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-xs transition-opacity hover:opacity-90"
                 >
                   Schedule a Consultation
                   <ArrowRight className="size-5" />

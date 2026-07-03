@@ -26,10 +26,26 @@ const isRecentlyAdded = (publishedAt: string) => {
 
 export function BlogTabs({ categories, posts }: BlogTabsProps) {
   const [activeCategory, setActiveCategory] = useState("All");
+  const tabCategories = useMemo(
+    () => [
+      "All",
+      "Recent",
+      ...categories.filter((category) => category !== "All"),
+    ],
+    [categories],
+  );
 
   const filteredPosts = useMemo(() => {
     if (activeCategory === "All") {
       return posts;
+    }
+
+    if (activeCategory === "Recent") {
+      return [...posts].sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() -
+          new Date(a.publishedAt).getTime(),
+      );
     }
 
     return posts.filter((post) => post.category === activeCategory);
@@ -41,9 +57,9 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
         <div
           role="tablist"
           aria-label="Blog categories"
-          className="mx-auto flex max-w-5xl flex-wrap justify-center gap-2"
+          className="mx-auto grid max-w-5xl grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center"
         >
-          {categories.map((category) => {
+          {tabCategories.map((category) => {
             const isActive = category === activeCategory;
 
             return (
@@ -54,9 +70,9 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
                 aria-selected={isActive}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "rounded-lg border px-4 py-2 text-sm font-semibold transition-colors",
+                  "inline-flex min-h-10 w-full items-center justify-center rounded-lg border px-4 py-2 text-center text-sm font-semibold transition-colors sm:w-[132px]",
                   isActive
-                    ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                    ? "border-primary bg-primary text-primary-foreground shadow-xs"
                     : "border-border bg-card text-foreground hover:border-primary/25 hover:bg-card/80 hover:text-primary",
                 )}
               >
@@ -69,7 +85,7 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
         <p className="mt-5 text-center text-sm text-muted-foreground">
           Showing {filteredPosts.length}{" "}
           {filteredPosts.length === 1 ? "blog" : "blogs"}
-          {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
+          {activeCategory !== "All" ? ` for ${activeCategory}` : ""}
         </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -77,7 +93,7 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
+              className="group overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xs"
             >
               {post.thumbnail && (
                 <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-background">

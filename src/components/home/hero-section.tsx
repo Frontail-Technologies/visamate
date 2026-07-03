@@ -31,7 +31,7 @@ export function HeroSection() {
   return (
     <section className="relative flex min-h-[calc(100vh-72px)] items-start justify-center overflow-hidden px-6 pb-14 pt-36 text-center sm:px-10 sm:pt-24 lg:min-h-dvh lg:items-center lg:px-16 lg:pb-16 lg:pt-24">
       <Image
-        src="/images/hero-bg.png"
+        src="/images/illustrations/hero/hero-bg-1.png"
         alt=""
         fill
         priority
@@ -44,7 +44,7 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">
         <div className="flex max-w-4xl flex-col items-center gap-4 sm:gap-5">
-          <p className="mx-auto inline-flex max-w-[320px] items-center gap-2 rounded-lg border border-border bg-card/85 px-4 py-2 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur-md sm:max-w-fit sm:text-sm">
+          <p className="mx-auto inline-flex max-w-[320px] items-center gap-2 rounded-lg border border-border bg-card/85 px-4 py-2 text-xs font-semibold text-muted-foreground shadow-xs backdrop-blur-md sm:max-w-fit sm:text-sm">
             <Plane className="size-4 shrink-0 text-primary" />
             <span className="sm:hidden">{heroContent.mobileBadge}</span>
             <span className="hidden sm:inline">{heroContent.desktopBadge}</span>
@@ -83,7 +83,7 @@ export function HeroSection() {
             {heroContent.serviceChips.map(({ label, Icon }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-card/80 px-4 py-2.5 text-sm font-medium text-foreground shadow-sm backdrop-blur-md transition-colors hover:border-primary/20 hover:bg-card hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-card/80 px-4 py-2.5 text-sm font-medium text-foreground shadow-xs backdrop-blur-md transition-colors hover:border-primary/20 hover:bg-card hover:text-primary"
               >
                 <Icon className="size-[15px] text-primary" />
                 {label}

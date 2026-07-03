@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import {
@@ -65,12 +66,14 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section id="faq" className="bg-background py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="faq"
+      className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
+    >
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-            Frequently Asked{" "}
-            <span className="text-primary">Questions</span>
+            Frequently Asked <span className="text-primary">Questions</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground">
             Quick answers before you start your visa consultation.
@@ -78,7 +81,7 @@ export function FaqSection() {
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.4fr_0.6fr] lg:items-start">
-          <aside className="rounded-lg border border-border bg-card p-6 shadow-sm lg:sticky lg:top-24">
+          <aside className="rounded-lg border border-border bg-card p-6 shadow-xs lg:sticky lg:top-24">
             <h3 className="text-2xl font-bold tracking-tight text-foreground">
               Still curious?
             </h3>
@@ -92,6 +95,16 @@ export function FaqSection() {
                 <ArrowRight className="size-4" />
               </a>
             </Button>
+
+            <div className="mt-6 overflow-hidden rounded-lg border border-border bg-background p-3">
+              <Image
+                src="/images/illustrations/faqs/faq.png"
+                alt="Visa Mate FAQ illustration"
+                width={420}
+                height={320}
+                className="h-auto w-full object-contain"
+              />
+            </div>
           </aside>
 
           <div className="space-y-5">
@@ -103,7 +116,7 @@ export function FaqSection() {
               return (
                 <article
                   key={category}
-                  className="overflow-hidden rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6"
+                  className="overflow-hidden rounded-lg border border-border bg-card p-5 shadow-xs sm:p-6"
                 >
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
                     {category}

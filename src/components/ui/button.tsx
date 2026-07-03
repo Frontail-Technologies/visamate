@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_10px_28px_-14px_var(--primary)] before:pointer-events-none before:absolute before:inset-y-0 before:-left-1/2 before:w-1/2 before:-skew-x-12 before:bg-white/35 before:opacity-0 before:transition-all before:duration-700 hover:-translate-y-0.5 hover:bg-primary/95 hover:shadow-[0_18px_36px_-18px_var(--primary)] hover:before:translate-x-[280%] hover:before:opacity-100",
+          "bg-primary text-primary-foreground shadow-xs before:pointer-events-none before:absolute before:inset-y-0 before:-left-1/2 before:w-1/2 before:-skew-x-12 before:bg-white/35 before:opacity-0 before:transition-all before:duration-700 hover:-translate-y-0.5 hover:bg-primary/95 hover:shadow-xs hover:before:translate-x-[280%] hover:before:opacity-100",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20",
         outline:
           "border border-input bg-background shadow-xs hover:border-accent/40 hover:bg-secondary hover:text-secondary-foreground",
         secondary:
-          "bg-accent text-accent-foreground shadow-[0_10px_24px_-16px_var(--accent)] hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-[0_16px_30px_-18px_var(--accent)]",
+          "bg-accent text-accent-foreground shadow-xs hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-xs",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

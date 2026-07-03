@@ -1,5 +1,13 @@
 import { Globe, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 const mapUrl = "https://www.google.com/maps?q=Visa%20Mate&output=embed";
 
 const contactItems = [
@@ -35,19 +43,24 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="border-t border-border/50 bg-background py-16 lg:py-20"
+      className="relative overflow-hidden bg-background py-16 lg:py-20"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            Contact <span className="text-primary">Us</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+            Talk to our team and get clear guidance for your visa application.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Contact Us
-            </p>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            <h3 className="text-2xl font-bold tracking-tight text-foreground">
               Get In Touch
-            </h2>
+            </h3>
             <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
-              Talk to our team and get clear guidance for your visa application.
               We are here to help you understand the next step.
             </p>
 
@@ -90,7 +103,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-xs sm:p-6">
             <form className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
@@ -145,22 +158,25 @@ export function ContactSection() {
                 >
                   Service Type
                 </label>
-                <select
-                  id="service-type"
-                  className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Select service type
-                  </option>
-                  <option value="tourist">Tourist Visa</option>
-                  <option value="business">Business Visa</option>
-                  <option value="student">Student Visa</option>
-                  <option value="work">Work Visa</option>
-                  <option value="family">Family / Visit Visa</option>
-                  <option value="documents">Document Support</option>
-                  <option value="interview">Interview Preparation</option>
-                </select>
+                <Select name="service-type">
+                  <SelectTrigger
+                    id="service-type"
+                    className="h-auto w-full rounded-lg border-border bg-background px-4 py-3 text-sm text-foreground focus:border-primary"
+                  >
+                    <SelectValue placeholder="Select service type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="tourist">Tourist Visa</SelectItem>
+                    <SelectItem value="business">Business Visa</SelectItem>
+                    <SelectItem value="student">Student Visa</SelectItem>
+                    <SelectItem value="work">Work Visa</SelectItem>
+                    <SelectItem value="family">Family / Visit Visa</SelectItem>
+                    <SelectItem value="documents">Document Support</SelectItem>
+                    <SelectItem value="interview">
+                      Interview Preparation
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-1.5">
@@ -188,7 +204,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="mt-12 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+        <div className="mt-12 overflow-hidden rounded-lg border border-border bg-card shadow-xs">
           <iframe
             title="Visa Mate location on Google Maps"
             src={mapUrl}

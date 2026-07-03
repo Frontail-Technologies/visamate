@@ -80,11 +80,11 @@ export default async function BlogPage() {
         <JsonLd data={blogSchema} />
         <SiteNavbar />
 
-        <section className="pt-36 pb-14 sm:pt-40 lg:pt-44 lg:pb-16">
+        <section className="pt-20 pb-14 sm:pt-40 lg:pt-44 lg:pb-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Visa Preparation <span className="text-primary">Blogs</span>
+                Visa <span className="text-primary">Blogs</span>
               </h1>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
                 Practical long-form guidance for documents, interviews, visa

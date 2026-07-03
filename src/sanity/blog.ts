@@ -65,7 +65,7 @@ const fallbackPosts: BlogPost[] = [
     seoDescription:
       "Learn common visa application mistakes and how better preparation can help you avoid confusion.",
     thumbnail: {
-      url: "/images/illustrations/process/Visa%20Decision%20%26%20Guidance.png",
+      url: "/images/blogs.png",
       alt: "Visa decision guidance illustration",
     },
     body: [
@@ -106,7 +106,7 @@ const fallbackPosts: BlogPost[] = [
     seoDescription:
       "Prepare your visa documents with a clear checklist and simple file organization process.",
     thumbnail: {
-      url: "/images/illustrations/features/Clear%20document%20support.png",
+      url: "/images/blogs.png",
       alt: "Visa document support illustration",
     },
     body: [
@@ -137,13 +137,17 @@ const fallbackPosts: BlogPost[] = [
     publishedAt: "2026-06-08",
     author: "Visa Mate",
     category: "Interview Prep",
-    keywords: ["visa interview tips", "interview preparation", "visa questions"],
+    keywords: [
+      "visa interview tips",
+      "interview preparation",
+      "visa questions",
+    ],
     readTime: "6 min read",
     seoTitle: "Visa Interview Tips for Clear Answers | Visa Mate",
     seoDescription:
       "Prepare for common visa interview questions with clear and practical answer guidance.",
     thumbnail: {
-      url: "/images/illustrations/process/Interview%20Preparation.png",
+      url: "/images/blogs.png",
       alt: "Visa interview preparation illustration",
     },
     body: [

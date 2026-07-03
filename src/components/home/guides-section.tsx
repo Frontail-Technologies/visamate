@@ -90,13 +90,8 @@ export function GuidesSection() {
         {/* Header */}
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              <InstagramIcon className="inline size-3.5 mr-1.5" />
-              Guides
-            </p>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Learn About{" "}
-              <span className="text-primary">Visa Process Easily</span>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Visa Reels <span className="text-primary">Guides</span>
             </h2>
             <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
               Short video guides on Instagram &amp; Facebook — swipe, watch, and
@@ -107,7 +102,7 @@ export function GuidesSection() {
             href="https://www.instagram.com/visamate"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition-all hover:border-primary/30 hover:text-primary"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-xs transition-all hover:border-primary/30 hover:text-primary"
           >
             <InstagramIcon className="size-4" />
             Follow on Instagram
@@ -126,7 +121,7 @@ export function GuidesSection() {
               </div> */}
 
               {/* Instagram Embed — blockquote format */}
-              <div className="flex justify-center overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <div className="flex justify-center overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xs">
                 <blockquote
                   className="instagram-media"
                   data-instgrm-permalink={`https://www.instagram.com/reel/${shortcode}/?utm_source=ig_embed&utm_campaign=loading`}

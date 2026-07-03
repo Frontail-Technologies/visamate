@@ -29,7 +29,7 @@ export function GuidesTabs({ categories, guides }: GuidesTabsProps) {
         <div
           role="tablist"
           aria-label="Guide categories"
-          className="flex flex-wrap justify-center gap-2"
+          className="mx-auto grid max-w-5xl grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center"
         >
           {categories.map((category) => {
             const isActive = category === activeCategory;
@@ -42,7 +42,7 @@ export function GuidesTabs({ categories, guides }: GuidesTabsProps) {
                 aria-selected={isActive}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "rounded-lg border px-4 py-2 text-sm font-semibold transition-colors",
+                  "inline-flex min-h-10 w-full items-center justify-center rounded-lg border px-4 py-2 text-center text-sm font-semibold transition-colors sm:w-[132px]",
                   isActive
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-foreground hover:border-primary/25 hover:text-primary",
@@ -66,7 +66,7 @@ export function GuidesTabs({ categories, guides }: GuidesTabsProps) {
               <article
                 id={slug}
                 key={slug}
-                className="group scroll-mt-28 overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-md"
+                className="group scroll-mt-28 overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs"
               >
                 <div className="relative h-56 overflow-hidden border-b border-border bg-background">
                   <Image

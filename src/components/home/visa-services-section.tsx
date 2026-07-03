@@ -42,15 +42,15 @@ const services = [
 
 export function VisaServicesSection() {
   return (
-    <section id="services" className="bg-background py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="services"
+      className="relative overflow-hidden bg-background py-20 lg:py-24"
+    >
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            Visa Services
-          </p>
-          <h2 className="mt-4 text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
-            Services We Provide
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+            Visa Services <span className="text-primary">We Provide</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
             Choose the right visa support based on your travel purpose and
@@ -63,7 +63,7 @@ export function VisaServicesSection() {
           {services.map(({ title, description, id, image }) => (
             <article
               key={id}
-              className="group relative min-h-[162px] overflow-hidden rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              className="group relative min-h-[162px] overflow-hidden rounded-lg border border-border bg-card p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-xs"
             >
               <DottedBackground className="opacity-60 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_74%)]" />
               <Image
@@ -83,7 +83,7 @@ export function VisaServicesSection() {
           ))}
 
           {/* CTA card — neutral, not maroon */}
-          <article className="relative flex min-h-[162px] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card p-6 shadow-sm">
+          <article className="relative flex min-h-[162px] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card p-6 shadow-xs">
             <DottedBackground className="opacity-80 [mask-image:radial-gradient(ellipse_at_top_right,black_20%,transparent_78%)]" />
             <div className="relative z-10">
               <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">

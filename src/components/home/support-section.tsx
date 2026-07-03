@@ -38,11 +38,9 @@ export function SupportSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
         {/* Left */}
         <div className="flex flex-col justify-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            What We Help With
-          </p>
-          <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-foreground">
-            Everything You Need To Prepare Better
+          <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-foreground">
+            Everything You Need{" "}
+            <span className="text-primary">To Prepare Better</span>
           </h2>
           <p className="mt-4 max-w-md text-sm leading-7 text-muted-foreground">
             From your first consultation to document planning and interview
@@ -59,7 +57,7 @@ export function SupportSection() {
           {supportCards.map(({ number, title, description, Icon }) => (
             <article
               key={title}
-              className="rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              className="rounded-lg border border-border bg-card p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-xs"
             >
               <div className="mb-4 flex size-10 items-center justify-center rounded-lg border border-border bg-background">
                 <Icon className="size-4 text-primary" />

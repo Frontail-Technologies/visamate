@@ -31,7 +31,7 @@ export function SiteNavbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 max-w-[100vw] px-0 py-0 sm:px-6 sm:py-4 lg:px-8 lg:py-6">
-      <nav className="mx-auto flex w-full max-w-full items-center justify-between gap-2 border-b border-border bg-background/95 px-3 py-2 backdrop-blur-xl sm:gap-4 sm:px-0 sm:pb-4 lg:max-w-7xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-2xl lg:shadow-primary/10">
+      <nav className="mx-auto flex w-full max-w-full items-center justify-between gap-2 border-b border-border bg-background/95 px-3 py-2 backdrop-blur-xl sm:gap-4 sm:px-0 sm:pb-4 lg:max-w-7xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-xs">
         <a
           href="/"
           className="flex min-w-0 items-center"
@@ -90,7 +90,7 @@ export function SiteNavbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((current) => !current)}
-            className="relative z-[70] inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-lg border border-primary/20 bg-card/90 text-primary shadow-sm transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+            className="relative z-[70] inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-lg border border-primary/20 bg-card/90 text-primary shadow-xs transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <span className="relative grid size-5 place-items-center">
@@ -115,7 +115,7 @@ export function SiteNavbar() {
 
       <div
         className={cn(
-          "fixed right-3 top-16 z-[60] w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-2xl shadow-primary/15 backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
+          "fixed right-3 top-16 z-[60] w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-xs backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
           open
             ? "translate-y-0 scale-100 opacity-100"
             : "pointer-events-none hidden -translate-y-2 scale-95 opacity-0",
