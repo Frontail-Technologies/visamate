@@ -15,7 +15,7 @@ export async function BlogsSection() {
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Practical Visa <span className="text-primary">Blogs</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             Simple blogs to help you understand documents, interviews, and
             better visa preparation.
           </p>

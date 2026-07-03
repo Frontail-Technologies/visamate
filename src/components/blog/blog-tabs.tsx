@@ -54,11 +54,8 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
   return (
     <section id="all-blogs" className="bg-background pb-16 lg:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div
-          role="tablist"
-          aria-label="Blog categories"
-          className="mx-auto grid max-w-5xl grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center"
-        >
+        {/* Category filter strip */}
+        <div className="no-scrollbar -mx-4 flex items-center gap-2 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0">
           {tabCategories.map((category) => {
             const isActive = category === activeCategory;
 
@@ -70,10 +67,10 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
                 aria-selected={isActive}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "inline-flex min-h-10 w-full items-center justify-center rounded-lg border px-4 py-2 text-center text-sm font-semibold transition-colors sm:w-[132px]",
+                  "inline-flex shrink-0 items-center rounded-lg border px-4 py-1.5 text-sm font-semibold transition-colors",
                   isActive
                     ? "border-primary bg-primary text-primary-foreground shadow-xs"
-                    : "border-border bg-card text-foreground hover:border-primary/25 hover:bg-card/80 hover:text-primary",
+                    : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-primary",
                 )}
               >
                 {category}
@@ -82,13 +79,13 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
           })}
         </div>
 
-        <p className="mt-5 text-center text-sm text-muted-foreground">
+        <p className="mt-4 text-center text-sm text-muted-foreground">
           Showing {filteredPosts.length}{" "}
           {filteredPosts.length === 1 ? "blog" : "blogs"}
-          {activeCategory !== "All" ? ` for ${activeCategory}` : ""}
+          {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
         </p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {filteredPosts.map((post) => (
             <Link
               key={post.slug}
@@ -113,7 +110,7 @@ export function BlogTabs({ categories, posts }: BlogTabsProps) {
                     {post.category}
                   </p>
                   {isRecentlyAdded(post.publishedAt) && (
-                    <span className="rounded-lg bg-primary/10 px-2 py-1 text-[10px] font-extrabold uppercase tracking-widest text-primary">
+                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-widest text-primary">
                       New
                     </span>
                   )}

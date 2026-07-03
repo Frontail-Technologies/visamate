@@ -2,43 +2,7 @@ import Image from "next/image";
 
 import { DottedBackground } from "@/components/ui/dotted-background";
 
-const services = [
-  {
-    title: "Tourist Visa",
-    description:
-      "Travel guidance, document checklist, and application support.",
-    id: "tourist",
-    image: "/images/illustrations/services/tourist%20visa.png",
-  },
-  {
-    title: "Business Visa",
-    description:
-      "Business documentation, invitation support, and application assistance.",
-    id: "business",
-    image: "/images/illustrations/services/business%20visa.png",
-  },
-  {
-    title: "Student Visa",
-    description:
-      "Admission documents, SOP guidance, and interview preparation.",
-    id: "student",
-    image: "/images/illustrations/services/student%20visa.png",
-  },
-  {
-    title: "Work Visa",
-    description:
-      "Job-related documentation, eligibility guidance, and process support.",
-    id: "work",
-    image: "/images/illustrations/services/work%20visa.png",
-  },
-  {
-    title: "Family Visa",
-    description:
-      "Invitation support, relationship documents, and application help.",
-    id: "family",
-    image: "/images/illustrations/services/family%20visa.png",
-  },
-];
+import { visaServices as services } from "@/data/home";
 
 export function VisaServicesSection() {
   return (
@@ -49,10 +13,10 @@ export function VisaServicesSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Visa Services <span className="text-primary">We Provide</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             Choose the right visa support based on your travel purpose and
             profile.
           </p>

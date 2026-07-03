@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export function CtaSection() {
   return (
-    <section className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-16">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-lg border border-border bg-card shadow-xs backdrop-blur-md">
           <div className="grid items-center gap-8 p-6 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
@@ -13,7 +13,7 @@ export function CtaSection() {
                 <span className="text-primary">Visa Journey?</span>
               </h2>
 
-              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
                 Experience a simple, stress-free visa process with our clear,
                 honest, and step-by-step guidance. Start optimizing your
                 application today.

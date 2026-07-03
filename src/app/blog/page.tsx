@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { BlogTabs } from "@/components/blog/blog-tabs";
+import { CtaSection } from "@/components/home/cta-section";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNavbar } from "@/components/site-navbar";
@@ -80,7 +81,7 @@ export default async function BlogPage() {
         <JsonLd data={blogSchema} />
         <SiteNavbar />
 
-        <section className="pt-20 pb-14 sm:pt-40 lg:pt-44 lg:pb-16">
+        <section className="pb-14 pt-28 sm:pt-40 lg:pb-16 lg:pt-44">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -95,6 +96,7 @@ export default async function BlogPage() {
         </section>
 
         <BlogTabs categories={categories} posts={posts} />
+        <CtaSection />
       </main>
 
       <SiteFooter />

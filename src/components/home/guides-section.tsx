@@ -90,10 +90,10 @@ export function GuidesSection() {
         {/* Header */}
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
           <div>
-            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Visa Reels <span className="text-primary">Guides</span>
             </h2>
-            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               Short video guides on Instagram &amp; Facebook — swipe, watch, and
               understand the visa process in under 2 minutes.
             </p>

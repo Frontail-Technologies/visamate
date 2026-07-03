@@ -1,36 +1,4 @@
-import {
-  FileCheck,
-  MessageCircleQuestion,
-  ShieldCheck,
-  UserCheck,
-} from "lucide-react";
-
-const supportCards = [
-  {
-    number: "01",
-    title: "Personal Consultation",
-    description: "Get one-to-one guidance based on your travel purpose, profile, and visa requirement.",
-    Icon: UserCheck,
-  },
-  {
-    number: "02",
-    title: "Profile Review",
-    description: "Understand your current profile clearly before moving ahead with the visa process.",
-    Icon: ShieldCheck,
-  },
-  {
-    number: "03",
-    title: "Document Planning",
-    description: "Prepare and organize your important documents with a simple checklist.",
-    Icon: FileCheck,
-  },
-  {
-    number: "04",
-    title: "Interview Preparation",
-    description: "Practice common questions and learn how to answer with clarity and confidence.",
-    Icon: MessageCircleQuestion,
-  },
-];
+import { supportCards } from "@/data/home";
 
 export function SupportSection() {
   return (
@@ -38,11 +6,11 @@ export function SupportSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
         {/* Left */}
         <div className="flex flex-col justify-center">
-          <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-foreground">
+          <h2 className="max-w-xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Everything You Need{" "}
             <span className="text-primary">To Prepare Better</span>
           </h2>
-          <p className="mt-4 max-w-md text-sm leading-7 text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             From your first consultation to document planning and interview
             preparation, Visa Mate helps you understand every step with clear,
             practical guidance.

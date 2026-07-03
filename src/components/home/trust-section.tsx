@@ -1,29 +1,4 @@
-import { FileCheck, ListChecks, MessageCircle, UserCheck } from "lucide-react";
-
-const trustCards = [
-  {
-    title: "Personal Consultation",
-    description:
-      "One-to-one guidance based on your travel purpose and profile.",
-    Icon: UserCheck,
-  },
-  {
-    title: "Document Support",
-    description:
-      "Simple checklist and document planning to keep your application organized.",
-    Icon: FileCheck,
-  },
-  {
-    title: "Interview Preparation",
-    description: "Practice common questions and prepare with confidence.",
-    Icon: MessageCircle,
-  },
-  {
-    title: "Step-by-Step Process",
-    description: "Clear guidance from consultation to final preparation.",
-    Icon: ListChecks,
-  },
-];
+import { trustCards } from "@/data/home";
 
 export function TrustSection() {
   return (

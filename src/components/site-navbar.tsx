@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { label: "Services", href: "/#services", Icon: Compass },
   { label: "Process", href: "/#process", Icon: Route },
-  { label: "Countries", href: "/#countries", Icon: Globe2 },
+  { label: "Guides", href: "/guides", Icon: Globe2 },
   { label: "Blog", href: "/blog", Icon: Globe2 },
   { label: "Reviews", href: "/#reviews", Icon: BadgeCheck },
 ];
@@ -30,7 +30,7 @@ export function SiteNavbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 max-w-[100vw] px-0 py-0 sm:px-6 sm:py-4 lg:px-8 lg:py-6">
+    <header className="fixed inset-x-0 top-8 z-50 max-w-[100vw] px-0 py-0 sm:top-0 sm:px-6 sm:py-4 lg:px-8 lg:py-6">
       <nav className="mx-auto flex w-full max-w-full items-center justify-between gap-2 border-b border-border bg-background/95 px-3 py-2 backdrop-blur-xl sm:gap-4 sm:px-0 sm:pb-4 lg:max-w-7xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-xs">
         <a
           href="/"
@@ -115,7 +115,7 @@ export function SiteNavbar() {
 
       <div
         className={cn(
-          "fixed right-3 top-16 z-[60] w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-xs backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
+          "fixed right-3 top-24 z-[60] w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-xs backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
           open
             ? "translate-y-0 scale-100 opacity-100"
             : "pointer-events-none hidden -translate-y-2 scale-95 opacity-0",
@@ -148,7 +148,7 @@ export function SiteNavbar() {
           <Button variant="secondary" size="sm" asChild>
             <a href="#track" onClick={() => setOpen(false)}>
               <CalendarCheck className="size-4 text-white/90" />
-              Track
+              
             </a>
           </Button>
         </div>

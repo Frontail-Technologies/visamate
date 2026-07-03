@@ -2,51 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 import { DottedBackground } from "@/components/ui/dotted-background";
 
-const steps = [
-  {
-    number: "01",
-    title: "Consultation",
-    description: "We understand your profile, travel purpose, and visa type.",
-    image: "/images/illustrations/process/Consultation.png",
-  },
-  {
-    number: "02",
-    title: "Visa Selection",
-    description: "We suggest the right country and visa category for you.",
-    image: "/images/illustrations/process/Country%20%26%20Visa%20Selection.png",
-  },
-  {
-    number: "03",
-    title: "Documentation",
-    description: "We help you prepare a complete document checklist.",
-    image: "/images/illustrations/process/Documentation.png",
-  },
-  {
-    number: "04",
-    title: "Forms & Appointment",
-    description: "We assist with application forms and booking appointments.",
-    image:
-      "/images/illustrations/process/Form%20Filling%20%26%20Appointment.png",
-  },
-  {
-    number: "05",
-    title: "Interview Prep",
-    description: "We prepare you for common interview questions and process.",
-    image: "/images/illustrations/process/Interview%20Preparation.png",
-  },
-  {
-    number: "06",
-    title: "Submission & Tracking",
-    description: "We guide you during submission and tracking updates.",
-    image: "/images/illustrations/process/Submission%20%26%20Tracking.png",
-  },
-  {
-    number: "07",
-    title: "Final Decision",
-    description: "We support you after the final visa decision.",
-    image: "/images/illustrations/process/Visa%20Decision%20%26%20Guidance.png",
-  },
-];
+import { processSteps as steps } from "@/data/home";
 
 export function ProcessSection() {
   return (
@@ -57,11 +13,11 @@ export function ProcessSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground lg:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Your Visa Journey,{" "}
             <span className="text-primary">Step by Step</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             A simple step-by-step process to guide you from consultation to
             final visa decision.
           </p>
@@ -71,7 +27,7 @@ export function ProcessSection() {
         <div className="relative mt-12">
           <div className="absolute bottom-0 left-4 top-0 border-l border-dashed border-primary/25 sm:hidden" />
 
-          <div className="relative z-10 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="relative z-10 grid auto-rows-fr md:gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(({ number, title, description }, index) => {
               const showDesktopConnector = index !== 3;
 

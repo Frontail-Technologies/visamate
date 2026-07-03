@@ -11,58 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
-const categories = ["General", "Documents", "Interview", "Process"];
-
-const faqs = [
-  {
-    category: "General",
-    question: "What exactly does Visa Mate do?",
-    answer:
-      "Visa Mate provides visa consultation services. We help you understand the visa process, review your profile, prepare your document checklist, guide you through form filling, and help you prepare for your visa interview. We do not guarantee visa approvals, we support your preparation.",
-  },
-  {
-    category: "General",
-    question: "Do you guarantee that my visa will be approved?",
-    answer:
-      "No. Visa decisions are made by the respective embassies and consulates. We provide honest, practical guidance to help you prepare the best possible application, but we do not make promises or guarantees about outcomes.",
-  },
-  {
-    category: "Process",
-    question: "Which visas do you provide guidance for?",
-    answer:
-      "We provide guidance for Tourist Visas, Business Visas, Student Visas, Work Visas, and Family Visas. During your consultation, we'll help identify the most suitable visa category for your purpose.",
-  },
-  {
-    category: "Process",
-    question: "How does the consultation work?",
-    answer:
-      "You can book a consultation through our website or WhatsApp. During the session, we'll review your profile, travel purpose, and visa requirements, and provide personalised guidance on next steps.",
-  },
-  {
-    category: "Process",
-    question: "How long does the visa process take?",
-    answer:
-      "Processing times vary by country and visa type. We'll give you an estimated timeline during your consultation based on the specific visa you're applying for.",
-  },
-  {
-    category: "Documents",
-    question: "What documents will I need?",
-    answer:
-      "Required documents depend on your visa type and destination country. As part of our service, we provide you with a detailed, customised document checklist based on your specific situation.",
-  },
-  {
-    category: "Interview",
-    question: "Can you help me prepare for the visa interview?",
-    answer:
-      "Yes. We offer interview preparation sessions where we walk you through common interview questions, explain what visa officers typically look for, and help you practise answering clearly and confidently.",
-  },
-  {
-    category: "General",
-    question: "How do I get started?",
-    answer:
-      "Simply click 'Book Consultation' or reach out via WhatsApp. Our team will get in touch to understand your requirements and schedule your first session.",
-  },
-];
+import { faqCategories as categories, faqs } from "@/data/home";
 
 export function FaqSection() {
   return (
@@ -72,10 +21,10 @@ export function FaqSection() {
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Frequently Asked <span className="text-primary">Questions</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             Quick answers before you start your visa consultation.
           </p>
         </div>

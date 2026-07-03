@@ -1,45 +1,7 @@
 import Image from "next/image";
 
 import { LinedBackground } from "@/components/ui/lined-background";
-
-const points = [
-  {
-    title: "Honest and practical guidance",
-    description:
-      "Clear advice focused on preparation, process clarity, and realistic next steps.",
-    image: "/images/illustrations/features/Honest and practical guidance.png",
-  },
-  {
-    title: "Clear document support",
-    description:
-      "Simple document planning so your files stay organized and easier to review.",
-    image: "/images/illustrations/features/Clear document support.png",
-  },
-  {
-    title: "Interview preparation help",
-    description:
-      "Practice common questions and learn how to answer with better confidence.",
-    image: "/images/illustrations/features/Interview preparation help.png",
-  },
-  {
-    title: "Personalized consultation",
-    description:
-      "Guidance shaped around your travel purpose, profile, and visa category.",
-    image: "/images/illustrations/features/Personalized consultation.png",
-  },
-  {
-    title: "Easy communication support",
-    description:
-      "Stay informed with practical support throughout the preparation journey.",
-    image: "/images/illustrations/features/Easy communication support.png",
-  },
-  {
-    title: "No false promises or guarantees",
-    description:
-      "We keep the process honest and preparation-focused without approval claims.",
-    image: "/images/illustrations/features/No false promises or guarantees.png",
-  },
-];
+import { whyChoosePoints as points } from "@/data/home";
 
 export function WhyChooseSection() {
   return (

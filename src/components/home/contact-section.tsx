@@ -1,5 +1,3 @@
-import { Globe, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
-
 import {
   Select,
   SelectContent,
@@ -7,37 +5,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { contactItems, socialLinks } from "@/data/home";
 
 const mapUrl = "https://www.google.com/maps?q=Visa%20Mate&output=embed";
-
-const contactItems = [
-  {
-    label: "Phone",
-    value: "+91 98765 43210",
-    Icon: Phone,
-  },
-  {
-    label: "Email",
-    value: "hello@visamate.com",
-    Icon: Mail,
-  },
-  {
-    label: "Address",
-    value: "New Delhi, India",
-    Icon: MapPin,
-  },
-  {
-    label: "WhatsApp",
-    value: "Message us",
-    Icon: MessageCircle,
-  },
-];
-
-const socialLinks = [
-  { label: "WhatsApp", href: "#", Icon: MessageCircle },
-  { label: "Website", href: "#", Icon: Globe },
-  { label: "Telegram", href: "#", Icon: Send },
-];
 
 export function ContactSection() {
   return (
@@ -47,16 +17,16 @@ export function ContactSection() {
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Contact <span className="text-primary">Us</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             Talk to our team and get clear guidance for your visa application.
           </p>
         </div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-start">
-          <div>
+          <div className="rounded-lg border border-border bg-card p-5 shadow-xs sm:p-6">
             <h3 className="text-2xl font-bold tracking-tight text-foreground">
               Get In Touch
             </h3>

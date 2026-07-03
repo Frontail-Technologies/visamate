@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import { SiteNavbar } from "@/components/site-navbar";
 import { ProcessSection } from "@/components/home/process-section";
 import { WhyChooseSection } from "@/components/home/why-choose-section";
+import { MeetConsultantSection } from "@/components/home/meet-consultant-section";
 import { VisaServicesSection } from "@/components/home/visa-services-section";
 import { BlogsSection } from "@/components/home/blogs-section";
 import { ReviewsSection } from "@/components/home/reviews-section";
@@ -17,11 +18,12 @@ export default function Home() {
         <SiteNavbar />
         <HeroSection />
         <WhyChooseSection />
+        <MeetConsultantSection />
         <VisaServicesSection />
         <ProcessSection />
         <ReviewsSection />
-        <ContactSection />
         <FaqSection />
+        <ContactSection />
         <BlogsSection />
         <CtaSection />
       </main>

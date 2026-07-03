@@ -5,62 +5,7 @@ import { ArrowLeft, ArrowRight, Quote, Star, X } from "lucide-react";
 
 import { LinedBackground } from "@/components/ui/lined-background";
 
-const reviews = [
-  {
-    name: "Priya Sharma",
-    title: "Student Visa - Canada",
-    rating: "5.0",
-    date: "12 Mar, 2026",
-    review:
-      "Visa Mate made the entire process clear. Their SOP and document checklist guidance helped me understand exactly where to start.",
-    initials: "PS",
-  },
-  {
-    name: "Mohammed Al-Rashid",
-    title: "Business Visa - UK",
-    rating: "5.0",
-    date: "18 Mar, 2026",
-    review:
-      "Very honest team. They explained the documents I needed and what to expect during preparation without making false promises.",
-    initials: "MA",
-  },
-  {
-    name: "Anita Rodrigues",
-    title: "Tourist Visa - Schengen",
-    rating: "5.0",
-    date: "22 Mar, 2026",
-    review:
-      "The interview preparation session helped me feel calmer and more confident about how to present my travel purpose.",
-    initials: "AR",
-  },
-  {
-    name: "Rajan Mehta",
-    title: "Work Visa - USA",
-    rating: "5.0",
-    date: "02 Apr, 2026",
-    review:
-      "The consultation was detailed and personalised. They reviewed my profile and helped me understand what needed improvement.",
-    initials: "RM",
-  },
-  {
-    name: "Sarah Kim",
-    title: "Student Visa - Australia",
-    rating: "5.0",
-    date: "08 Apr, 2026",
-    review:
-      "Excellent document support. The checklist was simple, organized, and easy to follow throughout the preparation stage.",
-    initials: "SK",
-  },
-  {
-    name: "Farhan Chowdhury",
-    title: "Family Visa - New Zealand",
-    rating: "5.0",
-    date: "16 Apr, 2026",
-    review:
-      "The team was patient and answered my questions clearly. They made the family visa process easier to understand.",
-    initials: "FC",
-  },
-];
+import { clientReviews as reviews } from "@/data/home";
 
 function Stars({ count = 1 }: { count?: number }) {
   return (
@@ -120,14 +65,14 @@ export function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="overflow-hidden bg-background py-16 text-foreground sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Client <span className="text-primary">Reviews</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             Clients value clear guidance, honest communication, and practical
             support throughout their visa preparation.
           </p>
@@ -146,7 +91,7 @@ export function ReviewsSection() {
               return (
                 <article
                   key={name}
-                  className="relative min-w-0 flex-[0_0_100%] snap-start overflow-hidden rounded-lg border border-border bg-card p-6 shadow-xs transition-all duration-300 hover:border-primary/20 hover:shadow-xs sm:flex-[0_0_calc((100%-1rem)/2)] lg:flex-[0_0_calc((100%-2rem)/3)]"
+                  className="relative min-w-0 flex-[0_0_100%] snap-start overflow-hidden rounded-lg border border-border bg-card p-6 shadow-xs transition-colors hover:border-primary/20 sm:flex-[0_0_calc((100%-1rem)/2)] lg:flex-[0_0_calc((100%-2rem)/3)]"
                 >
                   <LinedBackground className="opacity-25 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_74%)]" />
                   <Quote className="pointer-events-none absolute bottom-5 right-6 size-12 fill-primary/10 text-primary/10" />

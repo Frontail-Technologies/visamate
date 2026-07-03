@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
 import { PostBody } from "@/components/blog/post-body";
+import { CtaSection } from "@/components/home/cta-section";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNavbar } from "@/components/site-navbar";
@@ -133,24 +134,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <SiteNavbar />
 
         <article className="px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pt-40">
-          <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-7xl">
             <Link
               href="/blog"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-primary"
+              className="mb-8 inline-flex  items-center gap-2 text-sm font-bold text-primary"
             >
               <ArrowLeft className="size-4" />
               Back to Blog
             </Link>
 
-            <div className="rounded-lg border border-border bg-card p-5 shadow-xs md:p-10">
+            <div className="rounded-lg   p-2 md:bg-white shadow-xs md:p-10">
               <header className="border-b border-border pb-8">
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">
                   {post.category}
                 </p>
-                <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+                <h1 className="mt-4 max-w-5xl text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                   {post.title}
                 </h1>
-                <p className="mt-5 max-w-3xl text-base leading-7 text-muted-foreground md:text-lg">
+                <p className="mt-5 max-w-4xl text-base leading-7 text-muted-foreground md:text-lg">
                   {post.excerpt}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted-foreground">
@@ -246,6 +247,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
           </div>
         </article>
+        <CtaSection />
       </main>
 
       <SiteFooter />
