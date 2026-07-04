@@ -3,10 +3,11 @@ import { ArrowRight, MessageCircle, Plane } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { heroContent } from "@/data/home";
+import { ApplyModal } from "@/components/apply-modal";
 
 export function HeroSection() {
   return (
-    <section className="relative flex md:min-h-[calc(100vh-72px)] items-start justify-center overflow-hidden px-6 pb-14 pt-44 text-center sm:px-10 sm:pt-24 lg:min-h-dvh lg:items-center lg:px-16 lg:pb-16 lg:pt-24">
+    <section className="relative flex lg:h-screen items-start justify-center overflow-hidden px-6 pb-14 pt-44 text-center sm:px-10 sm:pt-32 lg:items-center lg:px-16 lg:py-40">
       <Image
         src="/images/illustrations/hero/hero-bg-2.jpeg"
         alt=""
@@ -45,12 +46,14 @@ export function HeroSection() {
           </p>
 
           <div className="flex w-full max-w-md flex-col justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row">
-            <Button size="lg" className="h-12 w-full sm:w-auto" asChild>
-              <a href="#consultation">
-                {heroContent.primaryButton}
-                <ArrowRight className="size-4" />
-              </a>
-            </Button>
+            <ApplyModal>
+              <Button size="lg" className="h-12 w-full sm:w-auto" asChild>
+                <button>
+                  {heroContent.primaryButton}
+                  <ArrowRight className="size-4" />
+                </button>
+              </Button>
+            </ApplyModal>
             <Button
               size="lg"
               variant="outline"

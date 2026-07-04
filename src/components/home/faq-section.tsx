@@ -29,8 +29,8 @@ export function FaqSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.4fr_0.6fr] lg:items-start">
-          <aside className="rounded-lg border border-border bg-card p-6 shadow-xs lg:sticky lg:top-24">
+        <div className="mt-12 grid gap-6 md:grid-cols-[0.4fr_0.6fr] md:items-start">
+          <aside className="rounded-lg border border-border bg-card p-6 shadow-xs md:sticky md:top-24">
             <h3 className="text-2xl font-bold tracking-tight text-foreground">
               Still curious?
             </h3>
@@ -74,7 +74,6 @@ export function FaqSection() {
                   <Accordion
                     type="single"
                     collapsible
-                    defaultValue={`${category}-0`}
                     className="mt-5"
                   >
                     {categoryFaqs.map(({ question, answer }, index) => (

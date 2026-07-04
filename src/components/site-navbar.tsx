@@ -2,35 +2,41 @@
 
 import Image from "next/image";
 import {
-  ArrowRight,
   BadgeCheck,
   CalendarCheck,
   Compass,
   Globe2,
+  HelpCircle,
   Menu,
   MessageCircleQuestion,
+  Newspaper,
+  BookOpen,
   PlaneTakeoff,
   Route,
+  ThumbsUp,
   X,
 } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ApplyModal } from "@/components/apply-modal";
 
 const navLinks = [
   { label: "Services", href: "/#services", Icon: Compass },
   { label: "Process", href: "/#process", Icon: Route },
-  { label: "Guides", href: "/guides", Icon: Globe2 },
-  { label: "Blog", href: "/blog", Icon: Globe2 },
+  { label: "Why Us", href: "/#why-choose", Icon: ThumbsUp, mobileOnly: true },
+  { label: "Guides", href: "/guides", Icon: BookOpen },
+  { label: "Blog", href: "/blog", Icon: Newspaper },
   { label: "Reviews", href: "/#reviews", Icon: BadgeCheck },
+  { label: "FAQs", href: "/#faq", Icon: HelpCircle, mobileOnly: true },
 ];
 
 export function SiteNavbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-8 z-50 max-w-[100vw] px-0 py-0 sm:top-0 sm:px-6 sm:py-4 lg:px-8 lg:py-6">
+    <header className="fixed inset-x-0 top-8 z-40 max-w-[100vw] px-0 py-0 sm:top-0 sm:px-6 sm:py-4 lg:px-8 lg:py-6">
       <nav className="mx-auto flex w-full max-w-full items-center justify-between gap-2 border-b border-border bg-background/95 px-3 py-2 backdrop-blur-xl sm:gap-4 sm:px-0 sm:pb-4 lg:max-w-7xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-xs">
         <a
           href="/"
@@ -48,7 +54,7 @@ export function SiteNavbar() {
         </a>
 
         <div className="hidden items-center gap-1 lg:flex">
-          {navLinks.map((link) => (
+          {navLinks.filter(link => !link.mobileOnly).map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -70,27 +76,31 @@ export function SiteNavbar() {
             </a>
           </Button>
 
-          <Button size="sm" asChild>
-            <a href="/#consultation">
-              Apply now
-              <PlaneTakeoff className="size-4" />
-            </a>
-          </Button>
+          <ApplyModal>
+            <Button size="sm" asChild>
+              <button>
+                Apply now
+                <PlaneTakeoff className="size-4" />
+              </button>
+            </Button>
+          </ApplyModal>
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
-          <Button size="sm" className="px-2.5 sm:px-3" asChild>
-            <a href="/#consultation">
-              <span className="hidden min-[360px]:inline">Apply</span>
-              <PlaneTakeoff className="size-4" />
-            </a>
-          </Button>
+          <ApplyModal>
+            <Button size="sm" className="px-2.5 sm:px-3" asChild>
+              <button>
+                <span className="hidden min-[360px]:inline">Apply</span>
+                <PlaneTakeoff className="size-4" />
+              </button>
+            </Button>
+          </ApplyModal>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((current) => !current)}
-            className="relative z-[70] inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-lg border border-primary/20 bg-card/90 text-primary shadow-xs transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+            className="relative z-40 inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-lg border border-primary/20 bg-card/90 text-primary shadow-xs transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <span className="relative grid size-5 place-items-center">
@@ -115,7 +125,7 @@ export function SiteNavbar() {
 
       <div
         className={cn(
-          "fixed right-3 top-24 z-[60] w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-xs backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
+          "fixed right-3 top-24 z-40 w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-xs backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
           open
             ? "translate-y-0 scale-100 opacity-100"
             : "pointer-events-none hidden -translate-y-2 scale-95 opacity-0",
@@ -133,22 +143,16 @@ export function SiteNavbar() {
                 <link.Icon className="size-4 text-accent transition-transform group-hover:scale-110" />
                 {link.label}
               </span>
-              <ArrowRight className="size-3.5 translate-x-0 text-accent opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
+              <span className="size-3.5 translate-x-0 text-accent opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">&rarr;</span>
             </a>
           ))}
         </div>
 
-        <div className="mt-1.5 grid grid-cols-2 gap-2 border-t border-border pt-1.5">
+        <div className="mt-1.5 grid grid-cols-1 gap-2 border-t border-border pt-1.5">
           <Button variant="outline" size="sm" asChild>
             <a href="/#contact" onClick={() => setOpen(false)}>
               <MessageCircleQuestion className="size-4 text-accent" />
-              Contact
-            </a>
-          </Button>
-          <Button variant="secondary" size="sm" asChild>
-            <a href="#track" onClick={() => setOpen(false)}>
-              <CalendarCheck className="size-4 text-white/90" />
-              
+              Contact Us
             </a>
           </Button>
         </div>

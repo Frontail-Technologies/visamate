@@ -3,6 +3,13 @@ import { ArrowRight } from "lucide-react";
 import { DottedBackground } from "@/components/ui/dotted-background";
 
 import { processSteps as steps } from "@/data/home";
+import { ApplyModal } from "@/components/apply-modal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export function ProcessSection() {
   return (
@@ -25,24 +32,22 @@ export function ProcessSection() {
 
         {/* Steps grid */}
         <div className="relative mt-12">
-          <div className="absolute bottom-0 left-4 top-0 border-l border-dashed border-primary/25 sm:hidden" />
+          <div className="absolute bottom-0 left-4 top-0 hidden border-l border-dashed border-primary/25 sm:block" />
 
-          <div className="relative z-10 grid auto-rows-fr md:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Desktop Grid */}
+          <div className="relative z-10 hidden auto-rows-fr gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(({ number, title, description }, index) => {
               const showDesktopConnector = index !== 3;
 
               return (
-                <div key={number} className="relative ml-8 sm:ml-0">
-                  <span className="absolute -left-10 top-5 z-20 flex size-5 items-center justify-center rounded-full border border-primary/20 bg-card text-[10px] font-bold text-primary sm:hidden">
-                    {Number(number)}
-                  </span>
+                <div key={number} className="relative">
                   {showDesktopConnector && (
                     <div className="pointer-events-none absolute -right-4 top-1/2 z-20 hidden w-4 items-center lg:flex">
                       <span className="h-px flex-1 border-t border-dashed border-primary/35" />
                       <ArrowRight className="-ml-1 size-3 text-primary/50" />
                     </div>
                   )}
-                  <article className="group relative flex min-h-[178px] flex-col overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs">
+                  <article className="group relative flex h-full min-h-[178px] flex-col overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs">
                     <DottedBackground className="opacity-50 [mask-image:radial-gradient(ellipse_at_top_right,black_16%,transparent_76%)]" />
                     <span className="relative z-10 inline-flex w-fit rounded-full border border-border bg-background px-2.5 py-1 text-xs font-bold text-primary">
                       {number}
@@ -58,11 +63,8 @@ export function ProcessSection() {
               );
             })}
 
-            <div className="relative ml-8 sm:ml-0">
-              <span className="absolute -left-10 top-5 z-20 flex size-5 items-center justify-center rounded-full border border-primary/20 bg-card text-[10px] font-bold text-primary sm:hidden">
-                8
-              </span>
-              <article className="group relative flex min-h-[178px] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs">
+            <div className="relative">
+              <article className="group relative flex h-full min-h-[178px] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs">
                 <DottedBackground className="opacity-60 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_76%)]" />
                 <div className="relative z-10">
                   <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -76,14 +78,59 @@ export function ProcessSection() {
                     step.
                   </p>
                 </div>
-                <a
-                  href="#contact"
-                  className="relative z-10 mt-3 inline-flex w-fit items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  Book Consultation
-                </a>
+                <ApplyModal>
+                  <button className="relative z-10 mt-3 inline-flex w-fit items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+                    Book Consultation
+                  </button>
+                </ApplyModal>
               </article>
             </div>
+          </div>
+
+          {/* Mobile Accordion */}
+          <div className="relative z-10 sm:hidden">
+            <Accordion type="single" collapsible className="w-full rounded-lg border border-border bg-card shadow-xs">
+              {steps.map(({ number, title, description }, index) => (
+                <AccordionItem
+                  key={number}
+                  value={`step-${index}`}
+                  className="px-4 [&:last-child]:border-b-0"
+                >
+                  <AccordionTrigger className="text-left text-sm font-semibold hover:no-underline">
+                    <span className="flex items-center gap-3">
+                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                        {Number(number)}
+                      </span>
+                      {title}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-4 text-sm leading-6 text-muted-foreground">
+                    {description}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+            
+            <article className="group relative mt-4 flex flex-col justify-between overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200">
+              <DottedBackground className="opacity-60 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_76%)]" />
+              <div className="relative z-10">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  Need guidance?
+                </p>
+                <h3 className="mt-2 text-base font-semibold text-foreground">
+                  Ready to Start?
+                </h3>
+                <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted-foreground">
+                  Book your consultation and get clear guidance for your next
+                  step.
+                </p>
+              </div>
+              <ApplyModal>
+                <button className="relative z-10 mt-3 inline-flex w-fit items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+                  Book Consultation
+                </button>
+              </ApplyModal>
+            </article>
           </div>
         </div>
       </div>

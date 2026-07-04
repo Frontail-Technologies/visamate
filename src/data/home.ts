@@ -15,11 +15,11 @@ import {
 } from "lucide-react";
 
 export const heroContent = {
-  mobileBadge: "Visa Consultation • Interview Prep",
-  desktopBadge: "Visa Consultation • Document Support • Interview Prep",
-  title: "Start Your Visa Journey With Clear Guidance",
+  mobileBadge: "US Visa Consultation • Interview Prep",
+  desktopBadge: "US Visa Experts • B1/B2, F1, H1B • Interview Prep",
+  title: "Start Your US Visa Journey With Clear Guidance",
   description:
-    "Visa Mate helps you prepare your documents, review your profile, and practice for your interview with simple step-by-step visa consultation.",
+    "Expert step-by-step consultation for your US Visa application. We simplify document preparation, profile reviews, and interview practice.",
   primaryButton: "Book Consultation",
   secondaryButton: "Chat on WhatsApp",
   trustTags: [

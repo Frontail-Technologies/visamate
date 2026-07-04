@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ApplyModal } from "@/components/apply-modal";
 
 export function CtaSection() {
   return (
@@ -20,13 +21,12 @@ export function CtaSection() {
               </p>
 
               <div className="mt-8">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-xs transition-opacity hover:opacity-90"
-                >
-                  Schedule a Consultation
-                  <ArrowRight className="size-5" />
-                </a>
+                <ApplyModal>
+                  <button className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-xs transition-opacity hover:opacity-90">
+                    Schedule a Consultation
+                    <ArrowRight className="size-5" />
+                  </button>
+                </ApplyModal>
               </div>
 
               <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground">

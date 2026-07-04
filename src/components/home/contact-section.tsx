@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { SuccessDialog } from "@/components/success-dialog";
 import {
   Select,
   SelectContent,
@@ -10,7 +14,44 @@ import { contactItems, socialLinks } from "@/data/home";
 const mapUrl = "https://www.google.com/maps?q=Visa%20Mate&output=embed";
 
 export function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      serviceType: formData.get("service-type"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setShowSuccess(true);
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      alert("Failed to Send. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
+    <>
     <section
       id="contact"
       className="relative overflow-hidden bg-background py-16 lg:py-20"
@@ -74,7 +115,7 @@ export function ContactSection() {
           </div>
 
           <div className="rounded-lg border border-border bg-card p-5 shadow-xs sm:p-6">
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
                   <label
@@ -85,7 +126,9 @@ export function ContactSection() {
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
+                    required
                     placeholder="Email"
                     className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
                   />
@@ -99,7 +142,9 @@ export function ContactSection() {
                   </label>
                   <input
                     id="name"
+                    name="name"
                     type="text"
+                    required
                     placeholder="Name"
                     className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
                   />
@@ -115,6 +160,7 @@ export function ContactSection() {
                 </label>
                 <input
                   id="phone"
+                  name="phone"
                   type="tel"
                   placeholder="Phone"
                   className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
@@ -158,17 +204,20 @@ export function ContactSection() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
+                  required
                   placeholder="Message"
                   className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary"
                 />
               </div>
 
               <button
-                type="button"
-                className="inline-flex rounded-lg bg-primary px-6 py-3 text-xs font-bold uppercase tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex rounded-lg bg-primary px-6 py-3 text-xs font-bold uppercase tracking-wide text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Submit Button
+                {isSubmitting ? "Sending..." : "Submit"}
               </button>
             </form>
           </div>
@@ -186,5 +235,7 @@ export function ContactSection() {
         </div>
       </div>
     </section>
+    <SuccessDialog open={showSuccess} onOpenChange={setShowSuccess} />
+    </>
   );
 }

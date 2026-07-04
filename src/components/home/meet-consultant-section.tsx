@@ -4,6 +4,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { DottedBackground } from "@/components/ui/dotted-background";
 
 import { meetConsultantHighlights as highlights } from "@/data/home";
+import { ApplyModal } from "@/components/apply-modal";
 
 export function MeetConsultantSection() {
   return (
@@ -28,15 +29,15 @@ export function MeetConsultantSection() {
 
         {/* Main card */}
         <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-xs">
-          <div className="grid lg:grid-cols-[420px_1fr]">
+          <div className="grid md:grid-cols-[350px_1fr] lg:grid-cols-[420px_1fr]">
             {/* Photo column */}
-            <div className="relative min-h-[400px] overflow-hidden bg-muted lg:min-h-full">
+            <div className="relative min-h-[400px] overflow-hidden bg-muted md:min-h-full">
               <DottedBackground className="opacity-40" />
               <Image
                 src="/images/founder.png"
                 alt="Visa Mate Founder"
                 fill
-                sizes="(max-width: 1024px) 100vw, 420px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 350px, 420px"
                 className="object-cover object-top"
               />
             </div>
@@ -96,13 +97,12 @@ export function MeetConsultantSection() {
 
               {/* CTA */}
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  Book a 1:1 Consultation
-                  <ArrowRight className="size-4" />
-                </a>
+                <ApplyModal>
+                  <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+                    Book a 1:1 Consultation
+                    <ArrowRight className="size-4" />
+                  </button>
+                </ApplyModal>
                 <a
                   href="https://wa.me/918955229807"
                   target="_blank"

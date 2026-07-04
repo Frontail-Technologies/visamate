@@ -2,7 +2,7 @@ import { trustCards } from "@/data/home";
 
 export function TrustSection() {
   return (
-    <section className="bg-background px-6 py-16 sm:px-10 lg:px-16 lg:py-20">
+    <section className="bg-background py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteTopbar } from "@/components/site-topbar";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 // import { SiteSplash } from "@/components/ui/site-splash";
 
 const fontSans = Outfit({
@@ -33,6 +34,7 @@ export default function RootLayout({
         {/* <SiteSplash /> */}
         <SiteTopbar />
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );
