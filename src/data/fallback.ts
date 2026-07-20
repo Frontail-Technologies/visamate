@@ -148,7 +148,7 @@ export const fallbackGuides: VideoGuide[] = [
     videoUrl: "https://www.instagram.com/reel/example",
     featured: false,
     publishedAt: "2026-06-05",
-    thumbnail: { url: "/images/process-image.png" },
+    thumbnail: { url: "/images/generated/about-consultation.png" },
   },
   {
     _id: "fallback-3",
@@ -170,7 +170,7 @@ export const fallbackGuides: VideoGuide[] = [
     videoUrl: "https://www.instagram.com/reel/example",
     featured: true,
     publishedAt: "2026-06-12",
-    thumbnail: { url: "/images/process-image.png" },
+    thumbnail: { url: "/images/generated/hero-travel-consultation.png" },
   },
   {
     _id: "fallback-5",
@@ -192,7 +192,7 @@ export const fallbackGuides: VideoGuide[] = [
     videoUrl: "https://www.instagram.com/reel/example",
     featured: false,
     publishedAt: "2026-06-18",
-    thumbnail: { url: "/images/process-image.png" },
+    thumbnail: { url: "/images/generated/cta-travel-documents.png" },
   },
   {
     _id: "fallback-7",

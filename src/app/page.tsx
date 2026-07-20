@@ -1,31 +1,43 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { SiteNavbar } from "@/components/site-navbar";
+import { PricingStatementSection } from "@/components/home/pricing-statement-section";
+import { PaymentStructureSection } from "@/components/home/payment-structure-section";
 import { ProcessSection } from "@/components/home/process-section";
 import { WhyChooseSection } from "@/components/home/why-choose-section";
-import { MeetConsultantSection } from "@/components/home/meet-consultant-section";
-import { VisaServicesSection } from "@/components/home/visa-services-section";
-import { BlogsSection } from "@/components/home/blogs-section";
-import { ReviewsSection } from "@/components/home/reviews-section";
 import { FaqSection } from "@/components/home/faq-section";
-import { ContactSection } from "@/components/home/contact-section";
-import { CtaSection } from "@/components/home/cta-section";
+import { EnquirySection } from "@/components/home/enquiry-section";
+import { FinalCtaSection } from "@/components/home/final-cta-section";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd } from "@/components/json-ld";
+import { faqItems } from "@/data/visa-mate";
 
 export default function Home() {
   return (
     <>
-      <main id="top" className="min-h-dvh bg-background text-foreground">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }}
+      />
+      <main className="min-h-dvh bg-background text-foreground">
         <SiteNavbar />
         <HeroSection />
-        <WhyChooseSection />
-        <MeetConsultantSection />
-        <VisaServicesSection />
+        {/* <PricingStatementSection /> */}
+        <PaymentStructureSection />
         <ProcessSection />
-        <ReviewsSection />
+        <WhyChooseSection />
         <FaqSection />
-        <ContactSection />
-        <BlogsSection />
-        <CtaSection />
+        <EnquirySection />
+        <FinalCtaSection />
       </main>
       <SiteFooter />
     </>

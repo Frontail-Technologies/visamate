@@ -36,11 +36,11 @@ export function contactEmailTemplate({
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
     .header {
-      background-color: #8d0f35;
+      background-color: #0c84cf;
       color: #ffffff;
       padding: 30px 40px;
       text-align: center;
-      border-bottom: 4px solid #b52c52;
+      border-bottom: 4px solid #0b5f99;
     }
     .header h1 {
       margin: 0;
@@ -76,7 +76,7 @@ export function contactEmailTemplate({
     }
     .message-box {
       background-color: #f8fafc;
-      border-left: 4px solid #8d0f35;
+      border-left: 4px solid #0c84cf;
       padding: 16px;
       margin-top: 8px;
       border-radius: 0 4px 4px 0;
@@ -106,17 +106,17 @@ export function contactEmailTemplate({
       
       <div class="field">
         <div class="label">Email Address</div>
-        <div class="value"><a href="mailto:${email}" style="color: #8d0f35; text-decoration: none;">${email}</a></div>
+        <div class="value"><a href="mailto:${email}" style="color: #0c84cf; text-decoration: none;">${email}</a></div>
       </div>
       
       <div class="field">
         <div class="label">Phone Number</div>
-        <div class="value"><a href="tel:${phone}" style="color: #8d0f35; text-decoration: none;">${phone}</a></div>
+        <div class="value"><a href="tel:${phone}" style="color: #0c84cf; text-decoration: none;">${phone}</a></div>
       </div>
       
       <div class="field">
         <div class="label">Service Type</div>
-        <div class="value" style="display: inline-block; background: #fff0f4; color: #8d0f35; padding: 6px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; border: 1px solid #f7a8bd;">${serviceType}</div>
+        <div class="value" style="display: inline-block; background: #e9f5ff; color: #0b5f99; padding: 6px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; border: 1px solid #b9ddf5;">${serviceType}</div>
       </div>
       
       <div class="field">

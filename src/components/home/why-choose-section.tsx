@@ -1,53 +1,133 @@
-import Image from "next/image";
+"use client";
 
-import { LinedBackground } from "@/components/ui/lined-background";
-import { whyChoosePoints as points } from "@/data/home";
+import Image from "next/image";
+import { Check } from "lucide-react";
+
+import { MotionReveal } from "@/components/ui/motion-reveal";
+import { whyChooseSection } from "@/data/visa-mate";
+import { cn } from "@/lib/utils";
+import { fadeIn, fadeUp } from "@/lib/motion-variants";
+
+const OVERLAY_GRADIENT =
+  "linear-gradient(180deg, rgba(7,24,39,0.02) 0%, rgba(7,24,39,0.38) 45%, rgba(7,24,39,0.9) 100%)";
+
+type CardLayout = {
+  eyebrow: string;
+  grid: string;
+  height: string;
+  longTitle?: boolean;
+};
+
+// Explicit bento layout, indexed to whyChooseSection.points (fixed 6-card order).
+const CARD_LAYOUT: CardLayout[] = [
+  {
+    // 1. USA B1/B2 Visa Specialists
+    eyebrow: "Specialists",
+    grid: "sm:col-span-1 lg:col-span-4",
+    height: "h-[280px] sm:h-[300px] lg:h-[300px]",
+  },
+  {
+    // 2. Transparent Process
+    eyebrow: "Process",
+    grid: "sm:col-span-1 lg:col-span-3",
+    height: "h-[280px] sm:h-[300px] lg:h-[300px]",
+  },
+  {
+    // 3. No Hidden Charges
+    eyebrow: "Transparency",
+    grid: "sm:col-span-1 lg:col-span-5",
+    height: "h-[280px] sm:h-[300px] lg:h-[300px]",
+  },
+  {
+    // 4. Pay Service Fee After Appointment Confirmation — prominent
+    eyebrow: "Payment",
+    grid: "sm:col-span-2 lg:col-span-5",
+    height: "h-[280px] sm:h-[320px] lg:h-[320px]",
+    longTitle: true,
+  },
+  {
+    // 5. Personalized Guidance
+    eyebrow: "Guidance",
+    grid: "sm:col-span-1 lg:col-span-4",
+    height: "h-[280px] sm:h-[320px] lg:h-[320px]",
+  },
+  {
+    // 6. Interview Preparation Included
+    eyebrow: "Interview",
+    grid: "sm:col-span-1 lg:col-span-3",
+    height: "h-[280px] sm:h-[320px] lg:h-[320px]",
+  },
+];
 
 export function WhyChooseSection() {
   return (
-    <section
-      id="why-choose"
-      className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
-    >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Why Choose <span className="text-primary">Visa Mate</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            We focus on clarity, honest guidance, and step-by-step support so
-            you can prepare better without confusion.
+    <section className="relative overflow-hidden bg-warm-white py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-340 px-4  sm:px-6 lg:px-8">
+        <MotionReveal variants={fadeUp}>
+          <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-burgundy">
+            {whyChooseSection.label}
           </p>
-        </div>
+        </MotionReveal>
+        <MotionReveal variants={fadeUp} delay={0.1}>
+          <h2 className="text-4xl mb-10.5 mt-5  font-bold text-brand-navy">
+            {whyChooseSection.heading}
+          </h2>
+        </MotionReveal>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {points.map(({ title, description, image }) => (
-            <article
-              key={title}
-              className="overflow-hidden rounded-lg border border-border bg-card/90 shadow-xs transition-all duration-300 hover:border-primary/20 hover:shadow-xs"
-            >
-              <div className="relative flex aspect-video items-center justify-center overflow-hidden  p-2">
-                <LinedBackground />
-                <Image
-                  src={image}
-                  alt={title}
-                  unoptimized
-                  width={420}
-                  height={315}
-                  className="relative z-10 h-full w-full object-contain"
-                />
-              </div>
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-12 lg:gap-5">
+          {whyChooseSection.points.map((point, index) => {
+            const layout = CARD_LAYOUT[index];
 
-              <div className="px-4 pb-4">
-                <h3 className="text-lg font-semibold text-foreground">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  {description}
-                </p>
-              </div>
-            </article>
-          ))}
+            return (
+              <MotionReveal
+                key={point.label}
+                variants={fadeUp}
+                delay={index * 0.06}
+                className={cn(layout.grid, layout.height)}
+              >
+                <div className="group relative h-full overflow-hidden rounded-3xl border border-white/18 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <MotionReveal variants={fadeIn} className="absolute inset-0">
+                    <Image
+                      src={point.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                      className="object-cover object-right transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </MotionReveal>
+
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: OVERLAY_GRADIENT }}
+                  />
+                  <div className="absolute inset-0 bg-burgundy/0 transition-colors duration-300 group-hover:bg-burgundy/18" />
+
+                  <div className="relative flex h-full flex-col justify-between p-4.5 sm:p-5 lg:p-6">
+                    <span className="ml-auto flex size-7.5 shrink-0 items-center justify-center rounded-full bg-white shadow-sm sm:size-8.5">
+                      <Check
+                        className="size-3.5 text-burgundy"
+                        strokeWidth={3}
+                      />
+                    </span>
+
+                    <div>
+                      <p className="text-bento-eyebrow mb-2 font-semibold text-white/75">
+                        {layout.eyebrow}
+                      </p>
+                      <p
+                        className={cn(
+                          "text-bento-title text-left font-bold text-white",
+                          layout.longTitle ? "max-w-105" : "max-w-[90%]",
+                        )}
+                      >
+                        {point.label}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </MotionReveal>
+            );
+          })}
         </div>
       </div>
     </section>

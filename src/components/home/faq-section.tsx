@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 import {
   Accordion,
@@ -10,91 +9,74 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-
-import { faqCategories as categories, faqs } from "@/data/home";
+import { MotionReveal } from "@/components/ui/motion-reveal";
+import { SectionLabel } from "@/components/ui/section-label";
+import { buildWhatsAppLink, faqItems, faqSection } from "@/data/visa-mate";
+import { fadeUp } from "@/lib/motion-variants";
 
 export function FaqSection() {
   return (
     <section
       id="faq"
-      className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24"
+      className="relative bg-warm-white py-20 sm:py-24 lg:py-32"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Frequently Asked <span className="text-primary">Questions</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            Quick answers before you start your visa consultation.
-          </p>
-        </div>
+      <div className="relative z-10 mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[0.38fr_0.62fr] lg:gap-16">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <MotionReveal variants={fadeUp}>
+              <SectionLabel tone="burgundy">FAQ</SectionLabel>
+            </MotionReveal>
+            <MotionReveal variants={fadeUp} delay={0.1}>
+              <h2 className="text-section-heading-secondary mt-5 font-bold text-foreground">
+                {faqSection.heading}
+              </h2>
+            </MotionReveal>
+            <MotionReveal variants={fadeUp} delay={0.18}>
+              <p className="mt-5 max-w-md font-serif text-base leading-relaxed text-muted-foreground">
+                Straight answers before you begin your USA B1/B2 visa
+                application with Visa Mate.
+              </p>
+            </MotionReveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-[0.4fr_0.6fr] md:items-start">
-          <aside className="rounded-lg border border-border bg-card p-6 shadow-xs md:sticky md:top-24">
-            <h3 className="text-2xl font-bold tracking-tight text-foreground">
-              Still curious?
-            </h3>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Send us your visa question and we&apos;ll point you in the right
-              direction.
-            </p>
-            <Button asChild className="mt-6">
-              <a href="#contact">
-                Contact Us
-                <ArrowRight className="size-4" />
-              </a>
-            </Button>
-
-            <div className="mt-6 overflow-hidden rounded-lg border border-border bg-background p-3">
-              <Image
-                src="/images/illustrations/faqs/faq.png"
-                alt="Visa Mate FAQ illustration"
-                width={420}
-                height={320}
-                className="h-auto w-full object-contain"
-              />
-            </div>
-          </aside>
-
-          <div className="space-y-5">
-            {categories.map((category) => {
-              const categoryFaqs = faqs.filter(
-                (faq) => faq.category === category,
-              );
-
-              return (
-                <article
-                  key={category}
-                  className="overflow-hidden rounded-lg border border-border bg-card p-5 shadow-xs sm:p-6"
-                >
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                    {category}
-                  </p>
-
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="mt-5"
-                  >
-                    {categoryFaqs.map(({ question, answer }, index) => (
-                      <AccordionItem
-                        key={question}
-                        value={`${category}-${index}`}
-                        className="border-border"
-                      >
-                        <AccordionTrigger className="gap-4 text-left text-sm font-bold text-foreground hover:no-underline [&>svg]:rounded-lg [&>svg]:border [&>svg]:border-border [&>svg]:p-1 [&>svg]:size-8">
-                          {question}
-                        </AccordionTrigger>
-                        <AccordionContent className="text-sm leading-7 text-muted-foreground">
-                          {answer}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </article>
-              );
-            })}
+            <MotionReveal variants={fadeUp} delay={0.24}>
+              <div className="mt-10 rounded-[1.75rem] border border-border bg-white p-6 sm:p-8">
+                <p className="text-lg font-bold text-foreground">
+                  {faqSection.closing.heading}
+                </p>
+                <p className="mt-1 font-serif text-sm text-muted-foreground">
+                  {faqSection.closing.description}
+                </p>
+                <Button asChild variant="secondary" size="lg" className="mt-5 w-full">
+                  <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="size-4" />
+                    {faqSection.closing.cta}
+                  </a>
+                </Button>
+              </div>
+            </MotionReveal>
           </div>
+
+          <Accordion
+            type="single"
+            collapsible
+            className="flex w-full flex-col gap-3 text-left"
+          >
+            {faqItems.map(({ question, answer }, index) => (
+              <MotionReveal key={question} variants={fadeUp} delay={index * 0.06}>
+                <AccordionItem
+                  value={`faq-${index}`}
+                  className="overflow-hidden rounded-[1.75rem] border border-border bg-white px-6 py-2 transition-colors duration-300 data-[state=open]:border-burgundy/20 data-[state=open]:shadow-sm sm:px-8"
+                >
+                  <AccordionTrigger className="py-6 text-base font-semibold text-foreground sm:text-lg">
+                    {question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </MotionReveal>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>

@@ -75,9 +75,10 @@ export function ApplyModal({ children }: ApplyModalProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Apply for Visa Consultation</DialogTitle>
+          <DialogTitle>Free USA Visa Consultation</DialogTitle>
           <DialogDescription>
-            Fill out the form below with your details and we will get back to you shortly.
+            Share your details and our team will get back to you about your
+            USA B1/B2 visa application.
           </DialogDescription>
         </DialogHeader>
         <form className="grid gap-4 py-4" onSubmit={handleSubmit}>
@@ -91,20 +92,16 @@ export function ApplyModal({ children }: ApplyModalProps) {
           </div>
           <div className="grid gap-2">
             <Label htmlFor="phone">Phone / WhatsApp</Label>
-            <Input id="phone" name="phone" type="tel" required placeholder="+1 234 567 8900" />
+            <Input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210" />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="visa-type">Visa Type</Label>
-            <Select name="visa-type" required>
+            <Select name="visa-type" required defaultValue="b1-b2">
               <SelectTrigger id="visa-type">
                 <SelectValue placeholder="Select Visa Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="tourist">Tourist Visa</SelectItem>
-                <SelectItem value="student">Student Visa</SelectItem>
-                <SelectItem value="business">Business Visa</SelectItem>
-                <SelectItem value="work">Work Permit</SelectItem>
-                <SelectItem value="pr">Permanent Residency</SelectItem>
+                <SelectItem value="b1-b2">USA B1/B2 Tourist & Business Visa</SelectItem>
                 <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>

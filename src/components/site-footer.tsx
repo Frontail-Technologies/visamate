@@ -1,15 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
+
 import {
-  ArrowRight,
-  Briefcase,
-  GraduationCap,
-  Mail,
-  MapPin,
-  Phone,
-  Plane,
-  Users,
-  Wrench,
-} from "lucide-react";
+  buildWhatsAppLink,
+  contactEmail,
+  footerContent,
+  legalLinks,
+  navigationItems,
+  phoneDisplayNumber,
+  whatsappDisplayNumber,
+} from "@/data/visa-mate";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -24,236 +25,113 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-function InstagramIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  );
-}
-
-function FacebookIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-    </svg>
-  );
-}
-
-const services = [
-  { label: "Tourist Visa", Icon: Plane, href: "/#services" },
-  { label: "Business Visa", Icon: Briefcase, href: "/#services" },
-  { label: "Student Visa", Icon: GraduationCap, href: "/#services" },
-  { label: "Work Visa", Icon: Wrench, href: "/#services" },
-  { label: "Family Visa", Icon: Users, href: "/#services" },
-];
-
-const quickLinks = [
-  { label: "How It Works", href: "/#process" },
-  { label: "Why Choose Us", href: "/#why-choose" },
-  { label: "Blog", href: "/blog" },
-  { label: "Client Reviews", href: "/#reviews" },
-  { label: "FAQ", href: "/#faq" },
-];
-
-const contactInfo = [
-  { Icon: Phone, text: "+91 98765 43210", href: "tel:+919876543210" },
-  {
-    Icon: WhatsAppIcon,
-    text: "Chat on WhatsApp",
-    href: "https://wa.me/919876543210",
-  },
-  { Icon: Mail, text: "hello@visamate.in", href: "mailto:hello@visamate.in" },
-  { Icon: MapPin, text: "Mumbai, India", href: "#" },
-];
-
-const socials = [
-  {
-    Icon: WhatsAppIcon,
-    label: "WhatsApp",
-    href: "https://wa.me/919876543210",
-    color: "hover:text-[#25D366] hover:border-[#25D366]/30",
-  },
-  {
-    Icon: InstagramIcon,
-    label: "Instagram",
-    href: "https://www.instagram.com/visamate",
-    color: "hover:text-[#E1306C] hover:border-[#E1306C]/30",
-  },
-  {
-    Icon: FacebookIcon,
-    label: "Facebook",
-    href: "https://www.facebook.com/visamate",
-    color: "hover:text-[#1877F2] hover:border-[#1877F2]/30",
-  },
-];
-
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-card text-foreground">
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <footer className="bg-white text-foreground">
+      <div className="h-px w-full bg-linear-to-r from-transparent via-primary-blue/40 to-transparent" />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.35fr_0.9fr_0.9fr_1.15fr] lg:gap-10">
-          <div className="max-w-sm">
-            <a href="/" className="inline-block">
+      <div className="mx-auto max-w-340 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="grid gap-14 lg:grid-cols-[1.3fr_0.85fr_0.85fr] lg:gap-16">
+          <div className="max-w-md">
+            <Link
+              href="/#top"
+              className="inline-flex items-center"
+              aria-label="Visa Mate home"
+            >
               <Image
                 src="/images/logo.png"
                 alt="Visa Mate"
-                width={220}
-                height={75}
+                width={240}
+                height={82}
                 className="h-auto w-44 sm:w-52"
               />
-            </a>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Visa Mate provides honest, clear, and step-by-step visa
-              consultation services. We help you prepare better - from documents
-              to interviews.
+            </Link>
+            <p className="mt-6 font-serif text-base leading-7 text-muted-foreground">
+              {footerContent.description}
             </p>
 
-            <div className="mt-5 flex items-center gap-2.5">
-              {socials.map(({ Icon, label, href, color }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`flex size-10 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 ${color}`}
-                >
-                  <Icon className="size-4" />
-                </a>
-              ))}
+            <div className="mt-6 space-y-3">
+              <a
+                href={`tel:+91${phoneDisplayNumber}`}
+                className="flex min-h-11 items-center gap-2.5 font-serif text-base text-foreground/80 transition-colors hover:text-burgundy-bright"
+              >
+                <Phone className="size-4 shrink-0 text-burgundy" />
+                {whatsappDisplayNumber}
+              </a>
+              <a
+                href={`mailto:${contactEmail}`}
+                className="flex min-h-11 items-center gap-2.5 font-serif text-base text-foreground/80 transition-colors hover:text-burgundy-bright"
+              >
+                <Mail className="size-4 shrink-0 text-burgundy" />
+                {contactEmail}
+              </a>
             </div>
 
             <a
-              href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20visa%20consultation."
+              href={buildWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-bold text-foreground transition-all hover:border-primary/25 hover:bg-primary/5 hover:text-primary"
+              className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-burgundy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-deep-burgundy"
             >
-              <WhatsAppIcon className="size-4 text-[#25D366]" />
-              Book on WhatsApp
-              <ArrowRight className="size-3.5 text-muted-foreground" />
+              <WhatsAppIcon className="size-4" />
+              Apply on WhatsApp
             </a>
           </div>
 
           <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground/70">
-              Services
+            <p className="mb-5 text-lg font-bold tracking-tight text-foreground">
+              Company
             </p>
-            <ul className="space-y-2.5">
-              {services.map(({ label, Icon, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="group flex items-center gap-2.5 text-sm leading-6 text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <Icon className="size-3.5 text-muted-foreground/40 transition-colors group-hover:text-primary" />
-                    {label}
-                  </a>
-                </li>
-              ))}
+            <ul className="space-y-3.5">
+              {navigationItems
+                .filter(
+                  (item) => item.href !== "/#top" && item.label !== "Terms",
+                )
+                .map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="flex min-h-11 items-center font-serif text-base text-muted-foreground transition-colors hover:text-burgundy-bright"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
           <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground/70">
-              Quick Links
+            <p className="mb-5 text-lg font-bold tracking-tight text-foreground">
+              Legal
             </p>
-            <ul className="space-y-2.5">
-              {quickLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <a
+            <ul className="space-y-3.5">
+              {legalLinks.map(({ label, href }) => (
+                <li key={href}>
+                  <Link
                     href={href}
-                    className="group flex items-center gap-2 text-sm leading-6 text-muted-foreground transition-colors hover:text-primary"
+                    className="flex min-h-11 items-center font-serif text-base text-muted-foreground transition-colors hover:text-burgundy-bright"
                   >
-                    <span className="size-1 rounded-full bg-border transition-colors group-hover:bg-primary" />
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground/70">
-              Contact
-            </p>
-            <ul className="space-y-2.5">
-              {contactInfo.map(({ Icon, text, href }) => (
-                <li key={text}>
-                  <a
-                    href={href}
-                    className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <Icon className="mt-0.5 size-3.5 shrink-0 text-muted-foreground/50" />
-                    {text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-5 rounded-lg border border-border bg-background p-4 shadow-xs">
-              <p className="text-xs font-bold uppercase tracking-[0.15em] text-primary">
-                Quick Updates
-              </p>
-              <p className="mt-2 text-xs leading-6 text-muted-foreground">
-                Get visa preparation tips, document guidance, and consultation
-                updates.
-              </p>
-              <a
-                href="/blog"
-                className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-foreground transition-colors hover:text-primary"
-              >
-                Read latest blogs
-                <ArrowRight className="size-3.5" />
-              </a>
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 text-center sm:flex-row sm:px-6 sm:text-left lg:px-8">
-          <p className="text-xs text-muted-foreground">
-            (c) {year} Visa Mate. All rights reserved.
+      <div className="border-t border-border bg-light-blue-bg/40">
+        <div className="mx-auto flex max-w-340 flex-col items-center justify-between gap-3 px-4 py-6 text-center sm:flex-row sm:px-6 sm:text-left lg:px-8">
+          <p className="font-serif text-xs text-muted-foreground">
+            © {year} Visa Mate. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            {["Privacy Policy", "Terms of Service", "Disclaimer"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="text-xs text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {item}
-                </a>
-              ),
-            )}
-          </div>
+          <p className="max-w-xl font-serif text-xs leading-relaxed text-muted-foreground/80">
+            Visa Mate is an independent visa consultancy and is not
+            affiliated with, endorsed by, or acting on behalf of the U.S.
+            Embassy, U.S. Consulate, or the U.S. Government.
+          </p>
         </div>
       </div>
     </footer>

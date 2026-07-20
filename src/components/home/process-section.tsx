@@ -1,137 +1,76 @@
-import { ArrowRight } from "lucide-react";
+"use client";
 
-import { DottedBackground } from "@/components/ui/dotted-background";
+import Image from "next/image";
 
-import { processSteps as steps } from "@/data/home";
-import { ApplyModal } from "@/components/apply-modal";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { MotionReveal } from "@/components/ui/motion-reveal";
+import { SectionLabel } from "@/components/ui/section-label";
+import { processSection, processSteps } from "@/data/visa-mate";
+import { fadeIn, fadeUp } from "@/lib/motion-variants";
 
 export function ProcessSection() {
   return (
     <section
-      id="process"
-      className="relative overflow-hidden bg-background py-20 lg:py-24"
+      id="how-it-works"
+      className="relative overflow-hidden bg-warm-white py-20 sm:py-28 lg:py-32"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            Your Visa Journey,{" "}
-            <span className="text-primary">Step by Step</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            A simple step-by-step process to guide you from consultation to
-            final visa decision.
-          </p>
+      <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <MotionReveal variants={fadeUp}>
+              <SectionLabel tone="burgundy">
+                {processSection.label}
+              </SectionLabel>
+            </MotionReveal>
+            <MotionReveal variants={fadeUp} delay={0.1}>
+              <h2 className="text-section-heading-secondary mt-5 font-bold text-foreground">
+                {processSection.heading}
+                <br />
+                <span>{processSection.headingItalic}</span>
+              </h2>
+            </MotionReveal>
+          </div>
+
+          <MotionReveal variants={fadeUp} delay={0.18}>
+            <p className="max-w-sm font-serif text-base leading-relaxed text-muted-foreground lg:text-right">
+              {processSection.subheading}
+            </p>
+          </MotionReveal>
         </div>
 
-        {/* Steps grid */}
-        <div className="relative mt-12">
-          <div className="absolute bottom-0 left-4 top-0 hidden border-l border-dashed border-primary/25 sm:block" />
-
-          {/* Desktop Grid */}
-          <div className="relative z-10 hidden auto-rows-fr gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map(({ number, title, description }, index) => {
-              const showDesktopConnector = index !== 3;
-
-              return (
-                <div key={number} className="relative">
-                  {showDesktopConnector && (
-                    <div className="pointer-events-none absolute -right-4 top-1/2 z-20 hidden w-4 items-center lg:flex">
-                      <span className="h-px flex-1 border-t border-dashed border-primary/35" />
-                      <ArrowRight className="-ml-1 size-3 text-primary/50" />
-                    </div>
-                  )}
-                  <article className="group relative flex h-full min-h-[178px] flex-col overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs">
-                    <DottedBackground className="opacity-50 [mask-image:radial-gradient(ellipse_at_top_right,black_16%,transparent_76%)]" />
-                    <span className="relative z-10 inline-flex w-fit rounded-full border border-border bg-background px-2.5 py-1 text-xs font-bold text-primary">
-                      {number}
+        <div className="mt-14 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:gap-8">
+          {processSteps.map((step, index) => (
+            <MotionReveal
+              key={step.number}
+              variants={fadeUp}
+              delay={index * 0.06}
+            >
+              <article className="group overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-sm">
+                <MotionReveal variants={fadeIn} className="block">
+                  <div className="relative aspect-4/3 overflow-hidden">
+                    <Image
+                      src={step.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 flex size-10 items-center justify-center rounded-full bg-white/90 text-sm font-bold text-burgundy shadow-sm backdrop-blur-sm">
+                      {step.number}
                     </span>
-                    <h3 className="relative z-10 mt-6 text-base font-semibold text-foreground">
-                      {title}
-                    </h3>
-                    <p className="relative z-10 mt-2 text-sm leading-6 text-muted-foreground">
-                      {description}
-                    </p>
-                  </article>
-                </div>
-              );
-            })}
+                  </div>
+                </MotionReveal>
 
-            <div className="relative">
-              <article className="group relative flex h-full min-h-[178px] flex-col justify-between overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xs">
-                <DottedBackground className="opacity-60 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_76%)]" />
-                <div className="relative z-10">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Need guidance?
-                  </p>
-                  <h3 className="mt-4 text-base font-semibold text-foreground">
-                    Ready to Start?
+                <div className="p-7 sm:p-9">
+                  <h3 className="text-xl font-bold tracking-tight text-foreground">
+                    {step.title}
                   </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">
-                    Book your consultation and get clear guidance for your next
-                    step.
+                  <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {step.description}
                   </p>
                 </div>
-                <ApplyModal>
-                  <button className="relative z-10 mt-3 inline-flex w-fit items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-                    Book Consultation
-                  </button>
-                </ApplyModal>
               </article>
-            </div>
-          </div>
-
-          {/* Mobile Accordion */}
-          <div className="relative z-10 sm:hidden">
-            <Accordion type="single" collapsible className="w-full rounded-lg border border-border bg-card shadow-xs">
-              {steps.map(({ number, title, description }, index) => (
-                <AccordionItem
-                  key={number}
-                  value={`step-${index}`}
-                  className="px-4 [&:last-child]:border-b-0"
-                >
-                  <AccordionTrigger className="text-left text-sm font-semibold hover:no-underline">
-                    <span className="flex items-center gap-3">
-                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
-                        {Number(number)}
-                      </span>
-                      {title}
-                    </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-4 text-sm leading-6 text-muted-foreground">
-                    {description}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-            
-            <article className="group relative mt-4 flex flex-col justify-between overflow-hidden rounded-lg border border-border bg-card/95 p-5 shadow-xs transition-all duration-200">
-              <DottedBackground className="opacity-60 [mask-image:radial-gradient(ellipse_at_top_right,black_18%,transparent_76%)]" />
-              <div className="relative z-10">
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Need guidance?
-                </p>
-                <h3 className="mt-2 text-base font-semibold text-foreground">
-                  Ready to Start?
-                </h3>
-                <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted-foreground">
-                  Book your consultation and get clear guidance for your next
-                  step.
-                </p>
-              </div>
-              <ApplyModal>
-                <button className="relative z-10 mt-3 inline-flex w-fit items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-                  Book Consultation
-                </button>
-              </ApplyModal>
-            </article>
-          </div>
+            </MotionReveal>
+          ))}
         </div>
       </div>
     </section>

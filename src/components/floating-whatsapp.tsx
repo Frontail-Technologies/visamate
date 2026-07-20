@@ -1,14 +1,14 @@
 "use client";
 
-
+import { buildWhatsAppLink } from "@/data/visa-mate";
 
 export function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/918955229807"
+      href={buildWhatsAppLink()}
       target="_blank"
       rel="noopener noreferrer"
-      className="group fixed bottom-6 right-2 z-40 flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      className="group fixed bottom-6 right-2 z-40 flex size-14 items-center justify-center rounded-full bg-burgundy text-white shadow-lg transition-transform hover:-translate-y-1 hover:bg-deep-burgundy hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-burgundy focus:ring-offset-2"
       aria-label="Chat with us on WhatsApp"
     >
       <svg

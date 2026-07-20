@@ -1,160 +1,106 @@
 "use client";
 
 import Image from "next/image";
-import {
-  BadgeCheck,
-  CalendarCheck,
-  Compass,
-  Globe2,
-  HelpCircle,
-  Menu,
-  MessageCircleQuestion,
-  Newspaper,
-  BookOpen,
-  PlaneTakeoff,
-  Route,
-  ThumbsUp,
-  X,
-} from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
+import { Menu, MessageCircle, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { ApplyModal } from "@/components/apply-modal";
-
-const navLinks = [
-  { label: "Services", href: "/#services", Icon: Compass },
-  { label: "Process", href: "/#process", Icon: Route },
-  { label: "Why Us", href: "/#why-choose", Icon: ThumbsUp, mobileOnly: true },
-  { label: "Guides", href: "/guides", Icon: BookOpen },
-  { label: "Blog", href: "/blog", Icon: Newspaper },
-  { label: "Reviews", href: "/#reviews", Icon: BadgeCheck },
-  { label: "FAQs", href: "/#faq", Icon: HelpCircle, mobileOnly: true },
-];
+import { Button } from "@/components/ui/button";
+import { buildWhatsAppLink, navigationItems } from "@/data/visa-mate";
+import { cn } from "@/lib/utils";
 
 export function SiteNavbar() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
-    <header className="fixed inset-x-0 top-8 z-40 max-w-[100vw] px-0 py-0 sm:top-0 sm:px-6 sm:py-4 lg:px-8 lg:py-6">
-      <nav className="mx-auto flex w-full max-w-full items-center justify-between gap-2 border-b border-border bg-background/95 px-3 py-2 backdrop-blur-xl sm:gap-4 sm:px-0 sm:pb-4 lg:max-w-7xl lg:rounded-lg lg:border lg:bg-card/80 lg:px-4 lg:py-3 lg:shadow-xs">
-        <a
-          href="/"
-          className="flex min-w-0 items-center"
-          aria-label="VisaMate home"
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-white/95 shadow-sm backdrop-blur-xl">
+      <nav className="mx-auto flex h-24 max-w-340 items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <Link
+          href="/#top"
+          className="flex shrink-0 items-center"
+          aria-label="Visa Mate home"
         >
           <Image
             src="/images/logo.png"
-            alt="VisaMate"
+            alt="Visa Mate"
             width={220}
             height={75}
             priority
-            className="h-auto w-28 sm:w-40 lg:w-44"
+            className="h-auto w-36 sm:w-44"
           />
-        </a>
+        </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          {navLinks.filter(link => !link.mobileOnly).map((link) => (
-            <a
+        <div className="hidden items-center gap-10 lg:flex">
+          {navigationItems.map((link) => (
+            <Link
               key={link.href}
               href={link.href}
-              className="group relative flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-300 hover:text-foreground"
+              className="font-serif text-[1.05rem] font-normal text-foreground transition-colors hover:text-burgundy-bright"
             >
-              <link.Icon className="size-4 text-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" />
               {link.label}
-              <span className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-primary via-accent to-transparent transition-transform duration-300 group-hover:scale-x-100" />
-              <span className="absolute inset-0 -z-10 rounded-lg bg-secondary/0 transition-colors duration-300 group-hover:bg-secondary/70" />
-            </a>
+            </Link>
           ))}
         </div>
 
-        <div className="hidden items-center gap-2 lg:flex">
-          <Button variant="outline" size="sm" asChild>
-            <a href="/#contact">
-              <MessageCircleQuestion className="size-4 text-accent" />
-              Contact
+        <div className="hidden lg:flex">
+          <Button asChild size="lg">
+            <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="size-4" />
+              Apply on WhatsApp
             </a>
           </Button>
-
-          <ApplyModal>
-            <Button size="sm" asChild>
-              <button>
-                Apply now
-                <PlaneTakeoff className="size-4" />
-              </button>
-            </Button>
-          </ApplyModal>
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
-          <ApplyModal>
-            <Button size="sm" className="px-2.5 sm:px-3" asChild>
-              <button>
-                <span className="hidden min-[360px]:inline">Apply</span>
-                <PlaneTakeoff className="size-4" />
-              </button>
-            </Button>
-          </ApplyModal>
+        <div className="ml-auto flex items-center gap-2 lg:hidden">
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-nav-drawer"
             onClick={() => setOpen((current) => !current)}
-            className="relative z-40 inline-flex size-11 shrink-0 touch-manipulation items-center justify-center rounded-lg border border-primary/20 bg-card/90 text-primary shadow-xs transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+            className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-border bg-white text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-blue"
           >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            <span className="relative grid size-5 place-items-center">
-              <Menu
-                className={cn(
-                  "absolute size-5 text-primary transition-all duration-300",
-                  open && "rotate-90 scale-75 opacity-0",
-                )}
-              />
-              <X
-                className={cn(
-                  "absolute size-5 text-primary transition-all duration-300",
-                  open
-                    ? "rotate-0 scale-100 opacity-100"
-                    : "-rotate-90 scale-75 opacity-0",
-                )}
-              />
-            </span>
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
       </nav>
 
       <div
+        id="mobile-nav-drawer"
         className={cn(
-          "fixed right-3 top-24 z-40 w-[calc(100vw-1.5rem)] max-w-80 origin-top-right rounded-lg border border-border bg-card/95 p-2 text-card-foreground shadow-xs backdrop-blur-xl transition-all duration-300 sm:right-6 sm:top-20 sm:w-[min(20rem,calc(100vw-3rem))] lg:hidden",
-          open
-            ? "translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none hidden -translate-y-2 scale-95 opacity-0",
+          "overflow-hidden border-t border-border bg-white shadow-lg transition-[max-height] duration-300 ease-in-out lg:hidden",
+          open ? "max-h-112" : "max-h-0 border-transparent",
         )}
       >
-        <div className="grid gap-1">
-          {navLinks.map((link) => (
-            <a
+        <div className="mx-auto grid max-w-340 gap-1 px-4 py-4 sm:px-6">
+          {navigationItems.map((link) => (
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="group flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="min-h-11 rounded-lg px-3 py-3 font-serif text-base font-normal text-foreground transition-colors hover:bg-light-blue-bg hover:text-primary-blue"
             >
-              <span className="flex items-center gap-2">
-                <link.Icon className="size-4 text-accent transition-transform group-hover:scale-110" />
-                {link.label}
-              </span>
-              <span className="size-3.5 translate-x-0 text-accent opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">&rarr;</span>
-            </a>
+              {link.label}
+            </Link>
           ))}
-        </div>
-
-        <div className="mt-1.5 grid grid-cols-1 gap-2 border-t border-border pt-1.5">
-          <Button variant="outline" size="sm" asChild>
-            <a href="/#contact" onClick={() => setOpen(false)}>
-              <MessageCircleQuestion className="size-4 text-accent" />
-              Contact Us
-            </a>
-          </Button>
+          <ApplyModal>
+            <Button
+              variant="secondary"
+              size="lg"
+              onClick={() => setOpen(false)}
+              className="mt-2 w-full"
+            >
+              Free Consultation
+            </Button>
+          </ApplyModal>
         </div>
       </div>
     </header>
