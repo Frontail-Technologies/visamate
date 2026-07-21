@@ -15,12 +15,12 @@ export function HeroSection() {
       className="relative isolate flex min-h-[95vh] items-center overflow-hidden bg-brand-navy text-white sm:min-h-screen"
     >
       <Image
-        src="/images/hero-bg.png"
+        src="/images/hero-bg.jpeg"
         alt="Modern glass office building with U.S. flags, representing a professional visa consultancy setting"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-right"
+        className="object-cover md:object-right object-center"
       />
 
       <div className="absolute inset-0 bg-linear-to-b from-brand-navy/80 via-brand-navy/55 to-brand-navy/85 md:hidden" />
@@ -60,7 +60,11 @@ export function HeroSection() {
             className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
             <Button asChild variant="secondary" size="lg">
-              <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <a
+                href={buildWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <MessageCircle className="size-4" />
                 {heroContent.primaryButton}
               </a>
