@@ -27,18 +27,22 @@ export function PaymentStepRow({
         variants={fadeIn}
         className={cn(reverse && "lg:order-2")}
       >
-        <div className="overflow-hidden rounded-[1.75rem] border border-border shadow-sm">
+        <div className="group overflow-hidden rounded-[1.75rem] border border-border shadow-sm">
           <Image
             src={step.image}
             alt=""
             width={800}
             height={640}
-            className="aspect-5/4 w-full object-cover"
+            className="aspect-5/4 w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         </div>
       </MotionReveal>
 
-      <MotionReveal variants={fadeUp} className={cn(reverse && "lg:order-1")}>
+      <MotionReveal
+        variants={fadeUp}
+        delay={0.1}
+        className={cn(reverse && "lg:order-1")}
+      >
         <span className="block text-5xl font-bold leading-none text-burgundy/50 sm:text-6xl">
           {step.number}
         </span>

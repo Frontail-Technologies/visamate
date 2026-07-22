@@ -1,27 +1,63 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { ChevronDown, MessageCircle } from "lucide-react";
 
-import { buildWhatsAppLink, heroContent } from "@/data/visa-mate";
+import { buildWhatsAppLink, heroBackgroundImages, heroContent } from "@/data/visa-mate";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion-variants";
 import { Button } from "@/components/ui/button";
+import { useFinePointer } from "@/hooks/use-fine-pointer";
+import { useImageCycle } from "@/hooks/use-image-cycle";
 
 export function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const activeIndex = useImageCycle(heroBackgroundImages.length);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const rawParallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
+
+  const isFinePointer = useFinePointer();
+  const prefersReducedMotion = useReducedMotion();
+  const parallaxActive = isFinePointer && !prefersReducedMotion;
+
   return (
     <section
+      ref={sectionRef}
       id="top"
       className="relative isolate flex min-h-[95vh] items-center overflow-hidden bg-brand-navy text-white sm:min-h-screen"
     >
-      <Image
-        src="/images/hero-bg.jpeg"
-        alt="Modern glass office building with U.S. flags, representing a professional visa consultancy setting"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover md:object-right object-center"
-      />
+      <motion.div
+        className="absolute inset-x-0"
+        style={{ top: "-15%", height: "115%", y: parallaxActive ? rawParallaxY : 0 }}
+      >
+        {heroBackgroundImages.map((image, index) => (
+          <motion.div
+            key={image.src}
+            className="absolute inset-0"
+            animate={{ opacity: index === activeIndex ? 1 : 0 }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover md:object-right object-center"
+            />
+          </motion.div>
+        ))}
+      </motion.div>
 
       <div className="absolute inset-0 bg-linear-to-b from-brand-navy/80 via-brand-navy/55 to-brand-navy/85 md:hidden" />
       <div className="absolute inset-0 hidden bg-linear-to-r from-black/60 via-burgundy/10 to-transparent md:block" />

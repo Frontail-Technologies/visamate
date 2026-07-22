@@ -4,14 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, MessageCircle, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 import { ApplyModal } from "@/components/apply-modal";
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppLink, navigationItems } from "@/data/visa-mate";
+import { fadeUp, staggerContainer } from "@/lib/motion-variants";
 import { cn } from "@/lib/utils";
 
 export function SiteNavbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -20,25 +23,44 @@ export function SiteNavbar() {
     };
   }, [open]);
 
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-white/95 shadow-sm backdrop-blur-xl">
-      <nav className="mx-auto flex h-24 max-w-340 items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link
-          href="/#top"
-          className="flex shrink-0 items-center"
-          aria-label="Visa Mate home"
-        >
-          <Image
-            src="/images/logo.png"
-            alt="Visa Mate"
-            width={220}
-            height={75}
-            priority
-            className="h-auto w-36 sm:w-44"
-          />
-        </Link>
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 16);
+  });
 
-        <div className="hidden items-center gap-10 lg:flex">
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-xl transition-shadow duration-300",
+        scrolled
+          ? "border-b border-border shadow-sm"
+          : "border-b border-transparent shadow-none",
+      )}
+    >
+      <motion.nav
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="mx-auto flex h-24 max-w-340 items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8"
+      >
+        <motion.div variants={fadeUp}>
+          <Link
+            href="/#top"
+            className="flex shrink-0 items-center"
+            aria-label="Visa Mate home"
+          >
+            <Image
+              src="/images/logo.png"
+              alt="Visa Mate"
+              width={220}
+              height={75}
+              priority
+              className="h-auto w-36 sm:w-44"
+            />
+          </Link>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="hidden items-center gap-10 lg:flex">
           {navigationItems.map((link) => (
             <Link
               key={link.href}
@@ -48,18 +70,18 @@ export function SiteNavbar() {
               {link.label}
             </Link>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="hidden lg:flex">
+        <motion.div variants={fadeUp} className="hidden lg:flex">
           <Button asChild size="lg">
             <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="size-4" />
               Apply on WhatsApp
             </a>
           </Button>
-        </div>
+        </motion.div>
 
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <motion.div variants={fadeUp} className="ml-auto flex items-center gap-2 lg:hidden">
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -70,8 +92,8 @@ export function SiteNavbar() {
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
-        </div>
-      </nav>
+        </motion.div>
+      </motion.nav>
 
       <div
         id="mobile-nav-drawer"

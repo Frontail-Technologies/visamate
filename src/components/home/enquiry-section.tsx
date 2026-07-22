@@ -71,14 +71,14 @@ export function EnquirySection() {
       <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           <MotionReveal variants={fadeUp} className="flex">
-            <div className="flex w-full flex-col overflow-hidden rounded-[1.75rem] border border-border shadow-sm">
-              <MotionReveal variants={fadeIn} className="relative h-64 sm:h-80">
+            <div className="group flex w-full flex-col overflow-hidden rounded-[1.75rem] border border-border shadow-sm">
+              <MotionReveal variants={fadeIn} className="relative h-64 overflow-hidden sm:h-80">
                 <Image
                   src="/images/generated/hero-travel-consultation.png"
                   alt="Visa Mate consultant reviewing travel documents with a client"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </MotionReveal>
 

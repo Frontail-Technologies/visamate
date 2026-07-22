@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Check } from "lucide-react";
 
 import { MotionReveal } from "@/components/ui/motion-reveal";
@@ -61,7 +62,10 @@ const CARD_LAYOUT: CardLayout[] = [
 
 export function WhyChooseSection() {
   return (
-    <section className="relative overflow-hidden bg-warm-white py-14 sm:py-16 lg:py-20">
+    <section
+      id="why-choose"
+      className="relative overflow-hidden bg-warm-white py-14 sm:py-16 lg:py-20"
+    >
       <div className="mx-auto max-w-340 px-4  sm:px-6 lg:px-8">
         <MotionReveal variants={fadeUp}>
           <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-burgundy">
@@ -85,7 +89,10 @@ export function WhyChooseSection() {
                 delay={index * 0.06}
                 className={cn(layout.grid, layout.height)}
               >
-                <div className="group relative h-full overflow-hidden rounded-3xl border border-white/18 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <Link
+                  href={`/why-visa-mate/${point.slug}`}
+                  className="group relative block h-full overflow-hidden rounded-3xl border border-white/18 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
                   <MotionReveal variants={fadeIn} className="absolute inset-0">
                     <Image
                       src={point.image}
@@ -124,7 +131,7 @@ export function WhyChooseSection() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               </MotionReveal>
             );
           })}

@@ -28,6 +28,23 @@ export const heroContent = {
   trustStatement: "100% Transparent Pricing – What You See Is What You Pay.",
 };
 
+export type HeroBackgroundImage = {
+  src: string;
+  alt: string;
+};
+
+// Add more entries here to extend the hero's background cycle — no other code changes needed.
+export const heroBackgroundImages: HeroBackgroundImage[] = [
+  {
+    src: "/images/hero-bg.jpeg",
+    alt: "The Golden Gate Bridge in San Francisco at dusk",
+  },
+  {
+    src: "/images/hero.png",
+    alt: "A modern glass office building with U.S. flags at dusk, representing a professional visa consultancy",
+  },
+];
+
 export const pricingStatement = {
   label: "Our Promise",
   heading: "100% Transparent Pricing",
@@ -213,8 +230,11 @@ export const faqItems: FaqItem[] = [
 ];
 
 export type WhyChoosePoint = {
+  slug: string;
   label: string;
   image: string;
+  pageTitle: string;
+  paragraphs: string[];
 };
 
 export const whyChooseSection = {
@@ -222,28 +242,72 @@ export const whyChooseSection = {
   heading: "Why should I choose Visa Mate?",
   points: [
     {
+      slug: "usa-b1-b2-visa-specialists",
       label: "USA B1/B2 Visa Specialists",
       image: "/images/illustrations/why-choose-us/usa-visa-specialists.png",
+      pageTitle: "Why We Specialize in USA B1/B2 Visas",
+      paragraphs: [
+        "At Visa Mate, we focus exclusively on USA B1/B2 Tourist & Business Visas. Rather than working across multiple visa categories, we have built our expertise around one specific visa type.",
+        "Every month, we assist numerous applicants with their B1/B2 visa applications. This continuous experience helps us understand common mistakes, documentation requirements, interview expectations, and factors that can strengthen an application.",
+        "Our team stays updated with embassy procedures and changing interview trends, allowing us to guide applicants with practical, experience-based advice throughout the process.",
+      ],
     },
     {
+      slug: "transparent-process",
       label: "Transparent Process",
       image: "/images/illustrations/why-choose-us/transparent-process.png",
+      pageTitle: "A Process You Can Trust",
+      paragraphs: [
+        "Transparency is one of our core values. Every commitment we make—whether during a phone call, WhatsApp chat, email, or consultation—is provided to you in writing whenever applicable.",
+        "Before you proceed, you'll receive complete information about the application process, required documents, timelines, and payment structure. We believe every applicant deserves complete clarity before making any decision.",
+        "Our goal is to ensure that you always know what to expect at every stage of your visa journey.",
+      ],
     },
     {
+      slug: "no-hidden-charges",
       label: "No Hidden Charges",
       image: "/images/illustrations/why-choose-us/no-hidden-charges.png",
+      pageTitle: "Clear Pricing. No Surprises.",
+      paragraphs: [
+        "Before your application begins, we clearly explain every applicable fee, including our service charges, processing charges (if applicable), and the U.S. Embassy visa fee.",
+        "We never add unexpected charges later in the process. Everything is communicated upfront so you know exactly what you're paying for.",
+        "No hidden costs. No last-minute surprises. Just complete pricing transparency.",
+      ],
     },
     {
+      slug: "pay-after-appointment-confirmation",
       label: "Pay Service Fee After Appointment Confirmation",
       image: "/images/illustrations/why-choose-us/appointment-confirmation.png",
+      pageTitle: "Pay Only After Appointment Confirmation",
+      paragraphs: [
+        "We believe our service should earn your trust before we ask for our service fee.",
+        "That's why our professional service fee is collected only after your U.S. Embassy appointment has been successfully confirmed.",
+        "This approach reflects our confidence in our process and gives applicants additional peace of mind before making their payment.",
+        "It also means you are never asked to commit a significant amount before there is a confirmed appointment to work toward. Our fee structure is designed to move in step with your progress, not ahead of it.",
+      ],
     },
     {
+      slug: "personalized-guidance",
       label: "Personalized Guidance",
       image: "/images/illustrations/why-choose-us/personalized-guidance.png",
+      pageTitle: "Guidance Based on Your Individual Profile",
+      paragraphs: [
+        "Every applicant has a different travel purpose, employment background, financial situation, and travel history. A one-size-fits-all approach simply doesn't work.",
+        "Our team reviews your profile individually and provides guidance tailored to your specific circumstances. From document preparation to interview readiness, our recommendations are based on your unique case.",
+        "Our objective is to help you present your application clearly, accurately, and confidently.",
+      ],
     },
     {
+      slug: "interview-preparation",
       label: "Interview Preparation Included",
       image: "/images/illustrations/why-choose-us/interview-preparation.png",
+      pageTitle: "Professional Interview Preparation",
+      paragraphs: [
+        "Your visa interview is one of the most important steps in the application process.",
+        "We provide interview preparation designed around your profile, travel purpose, and likely embassy questions. Our mock interview sessions help applicants understand what to expect and how to answer questions confidently and honestly.",
+        "The goal isn't to memorize answers—it's to ensure you're well prepared to communicate your genuine travel plans with confidence.",
+        "This preparation is included as part of our professional service, alongside your DS-160 completion and documentation support.",
+      ],
     },
   ] satisfies WhyChoosePoint[],
 };
