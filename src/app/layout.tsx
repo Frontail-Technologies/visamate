@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.visamate.in"),
+  metadataBase: new URL("https://visamate.co.in"),
   title: {
     default: "Visa Mate | USA Tourist & Business Visa Made Simple",
     template: "%s | Visa Mate",
@@ -34,10 +34,16 @@ export const metadata: Metadata = {
     title: "Visa Mate | USA Tourist & Business Visa Made Simple",
     description:
       "Expert guidance for DS-160, Appointment Booking & Visa Interview Preparation. 100% transparent pricing.",
-    url: "https://www.visamate.in",
+    url: "https://visamate.co.in",
     siteName: "Visa Mate",
     locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Visa Mate | USA Tourist & Business Visa Made Simple",
+    description:
+      "Expert guidance for DS-160, Appointment Booking & Visa Interview Preparation. 100% transparent pricing.",
   },
   robots: {
     index: true,
@@ -53,9 +59,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${fontSans.variable} ${fontSerif.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full max-w-[100vw] flex-col overflow-x-clip">
+      <body
+        className="flex min-h-full max-w-[100vw] flex-col overflow-x-clip"
+        suppressHydrationWarning
+      >
         <OrganizationJsonLd />
         {children}
         <FloatingWhatsApp />

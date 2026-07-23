@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { MotionReveal } from "@/components/ui/motion-reveal";
 import { SectionLabel } from "@/components/ui/section-label";
@@ -43,8 +45,9 @@ export function ProcessSection() {
               key={step.number}
               variants={fadeUp}
               delay={index * 0.06}
+              className="h-full"
             >
-              <article className="group overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-sm">
+              <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-sm">
                 <MotionReveal variants={fadeIn} className="block">
                   <div className="relative aspect-4/3 overflow-hidden">
                     <Image
@@ -60,13 +63,22 @@ export function ProcessSection() {
                   </div>
                 </MotionReveal>
 
-                <div className="p-7 sm:p-9">
+                <div className="flex flex-1 flex-col p-7 sm:p-9">
                   <h3 className="text-xl font-bold tracking-tight text-foreground">
                     {step.title}
                   </h3>
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {step.description}
                   </p>
+                  {step.link && (
+                    <Link
+                      href={step.link.href}
+                      className="mt-auto flex w-fit items-center gap-1.5 pt-3 font-serif text-sm font-semibold text-burgundy transition-colors hover:text-deep-burgundy"
+                    >
+                      {step.link.label}
+                      <ArrowRight className="size-3.5" />
+                    </Link>
+                  )}
                 </div>
               </article>
             </MotionReveal>

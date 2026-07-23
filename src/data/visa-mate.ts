@@ -135,6 +135,7 @@ export type ProcessStep = {
   title: string;
   description: string;
   image: string;
+  link?: { label: string; href: string };
 };
 
 export const processSection = {
@@ -159,6 +160,7 @@ export const processSteps: ProcessStep[] = [
     description:
       "We guide you through gathering and organizing every required document.",
     image: "/images/illustrations/process/2.jpeg",
+    link: { label: "View document checklist", href: "/document-checklist" },
   },
   {
     number: "03",
@@ -180,6 +182,7 @@ export type FaqItem = {
   question: string;
   answer: string;
   isPlaceholder?: boolean;
+  link?: { label: string; href: string };
 };
 
 export const faqSection = {
@@ -226,6 +229,7 @@ export const faqItems: FaqItem[] = [
     question: "What documents are required for a USA B1/B2 Visa?",
     answer:
       "The required documents vary depending on your profile. Our team provides a personalized checklist based on your employment, business, travel history, and purpose of travel.",
+    link: { label: "View the full document checklist", href: "/document-checklist" },
   },
   {
     question: "Do you help with the DS-160 application?",
@@ -251,6 +255,112 @@ export const faqItems: FaqItem[] = [
     question: "Can I contact Visa Mate through WhatsApp?",
     answer:
       "Yes. Our team is available on WhatsApp to answer your questions, provide updates, and guide you through every step of the process.",
+  },
+];
+
+export type DocumentChecklistSection = {
+  id: string;
+  title: string;
+  items: string[];
+};
+
+export const documentChecklistPage = {
+  heading: "DS-160 Document Checklist",
+  intro:
+    "The DS-160 form covers your personal, travel, family, employment, and background information in detail. Use this checklist to see what's typically needed before you begin.",
+  note: "The checklist above contains the basic documents required to start your application. Depending on your personal profile and travel history, our team may request additional information or documents to accurately complete your U.S. visa application.",
+};
+
+export const documentChecklistSections: DocumentChecklistSection[] = [
+  {
+    id: "personal-documents",
+    title: "1. Personal Documents",
+    items: [
+      "Current Passport",
+      "Previous Passport(s)",
+      "National ID (Aadhaar)",
+      "Passport-size digital photo",
+    ],
+  },
+  {
+    id: "travel-information",
+    title: "2. Travel Information",
+    items: [
+      "Proposed travel date",
+      "Purpose of travel",
+      "U.S. destination(s)",
+      "Hotel name/address",
+      "Flight details",
+      "Trip sponsor",
+    ],
+  },
+  {
+    id: "us-contact",
+    title: "3. U.S. Contact",
+    items: ["Contact name", "Hotel/Organization", "U.S. address", "Phone", "Email"],
+  },
+  {
+    id: "family-information",
+    title: "4. Family Information",
+    items: [
+      "Father's details",
+      "Mother's details",
+      "Spouse (if married)",
+      "Children (if applicable)",
+      "U.S. relatives",
+    ],
+  },
+  {
+    id: "employment",
+    title: "5. Employment",
+    items: [
+      "Employer",
+      "Office address",
+      "Phone",
+      "Job title",
+      "Salary",
+      "Start date",
+      "Duties",
+    ],
+  },
+  {
+    id: "previous-employment",
+    title: "6. Previous Employment",
+    items: ["Employer(s)", "Job title", "Dates", "Duties"],
+  },
+  {
+    id: "education",
+    title: "7. Education",
+    items: ["School/College", "Address", "Course/Degree", "Dates attended"],
+  },
+  {
+    id: "travel-history",
+    title: "8. Travel History",
+    items: [
+      "Previous U.S. visits",
+      "Visa refusals",
+      "International travel (5 years)",
+    ],
+  },
+  {
+    id: "security-background",
+    title: "9. Security & Background",
+    items: [
+      "Medical",
+      "Criminal history",
+      "Immigration violations",
+      "Military service",
+      "Security questions",
+    ],
+  },
+  {
+    id: "additional-information",
+    title: "10. Additional Information",
+    items: [
+      "Social media (5 years)",
+      "Email addresses (5 years)",
+      "Phone numbers (5 years)",
+    ],
   },
 ];
 

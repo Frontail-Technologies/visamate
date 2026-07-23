@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MessageCircle } from "lucide-react";
@@ -68,17 +67,6 @@ export default async function WhyVisaMateDetailPage({
             <h1 className="text-section-heading-primary mt-4 font-bold text-foreground">
               {point.pageTitle}
             </h1>
-
-            {/* <div className="relative mt-10 aspect-16/9 overflow-hidden rounded-[1.75rem] border border-border shadow-sm">
-              <Image
-                src={point.image}
-                alt=""
-                fill
-                sizes="(max-width: 768px) 100vw, 700px"
-                className="object-cover object-right"
-                priority
-              />
-            </div> */}
 
             <div className="mt-10 space-y-5 font-serif text-base leading-relaxed text-muted-foreground sm:text-lg">
               {point.paragraphs.map((paragraph) => (

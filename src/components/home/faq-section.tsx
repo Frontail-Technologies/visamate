@@ -1,6 +1,7 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
 import {
   Accordion,
@@ -61,7 +62,7 @@ export function FaqSection() {
             collapsible
             className="flex w-full flex-col gap-3 text-left"
           >
-            {faqItems.map(({ question, answer }, index) => (
+            {faqItems.map(({ question, answer, link }, index) => (
               <MotionReveal key={question} variants={fadeUp} delay={index * 0.06}>
                 <AccordionItem
                   value={`faq-${index}`}
@@ -72,6 +73,15 @@ export function FaqSection() {
                   </AccordionTrigger>
                   <AccordionContent className="pb-6 font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {answer}
+                    {link && (
+                      <Link
+                        href={link.href}
+                        className="mt-3 flex w-fit items-center gap-1.5 font-serif text-sm font-semibold text-burgundy transition-colors hover:text-deep-burgundy"
+                      >
+                        {link.label}
+                        <ArrowRight className="size-3.5" />
+                      </Link>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               </MotionReveal>

@@ -16,11 +16,19 @@ export function LegalPageLayout({
   lastUpdated,
   sections,
   intro,
+  label = "Legal",
+  ctaHeading = "Questions about this policy?",
+  ctaDescription = "Reach out and our team will help clarify anything you need.",
+  children,
 }: {
   title: string;
   lastUpdated: string;
   sections: LegalSection[];
   intro?: React.ReactNode;
+  label?: string;
+  ctaHeading?: string;
+  ctaDescription?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <>
@@ -28,7 +36,7 @@ export function LegalPageLayout({
       <main className="min-h-dvh bg-warm-white pb-24 pt-32 text-foreground sm:pt-36">
         <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
           <p className="text-label text-burgundy">
-            Legal
+            {label}
           </p>
           <h1 className="text-section-heading-primary mt-4 max-w-3xl font-bold text-foreground">
             {title}
@@ -76,15 +84,16 @@ export function LegalPageLayout({
                 </section>
               ))}
 
+              {children}
+
               <div className="rounded-3xl border border-border bg-white p-8 shadow-sm">
                 <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="font-bold text-foreground">
-                      Questions about this policy?
+                      {ctaHeading}
                     </p>
                     <p className="mt-1 font-serif text-sm text-muted-foreground">
-                      Reach out and our team will help clarify anything you
-                      need.
+                      {ctaDescription}
                     </p>
                   </div>
                   <Button asChild variant="secondary" size="lg" className="shrink-0">

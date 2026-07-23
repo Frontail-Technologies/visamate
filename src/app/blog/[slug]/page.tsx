@@ -13,7 +13,7 @@ import { getBlogPost, getBlogPosts, getBlogSlugs } from "@/sanity/blog";
 
 export const revalidate = 60;
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://visamate.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://visamate.co.in";
 
 type BlogPostPageProps = {
   params: Promise<{

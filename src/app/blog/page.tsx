@@ -9,7 +9,7 @@ import { getBlogCategories, getBlogPosts } from "@/sanity/blog";
 
 export const revalidate = 60;
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://visamate.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://visamate.co.in";
 
 export const metadata: Metadata = {
   title: "Visa Blog | Visa Mate",
