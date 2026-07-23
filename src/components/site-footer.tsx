@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 import {
   buildWhatsAppLink,
@@ -67,13 +67,22 @@ export function SiteFooter() {
                 <Mail className="size-4 shrink-0 text-burgundy" />
                 {contactEmail}
               </a>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(footerContent.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2.5 font-serif text-base text-foreground/80 transition-colors hover:text-burgundy-bright"
+              >
+                <MapPin className="mt-0.5 size-4 shrink-0 text-burgundy" />
+                <span>{footerContent.address}</span>
+              </a>
             </div>
 
             <a
               href={buildWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-burgundy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-deep-burgundy"
+              className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1EBE5A]"
             >
               <WhatsAppIcon className="size-4" />
               Apply on WhatsApp

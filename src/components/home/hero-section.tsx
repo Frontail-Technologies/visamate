@@ -45,7 +45,7 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       id="top"
-      className="relative isolate mt-16 flex min-h-[95vh] items-center overflow-hidden bg-brand-navy text-white sm:min-h-screen"
+      className="relative isolate flex min-h-[95vh] items-center overflow-hidden bg-brand-navy text-white sm:min-h-screen lg:mt-16"
     >
       <motion.div
         className="absolute inset-x-0"

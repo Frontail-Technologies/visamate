@@ -208,6 +208,11 @@ export const faqItems: FaqItem[] = [
       "Our professional service fee is payable only after your visa appointment has been successfully booked. This reflects our commitment to transparency and client trust.",
   },
   {
+    question: "Is your service fee for the entire family or for each applicant?",
+    answer:
+      "Our service fee is charged per applicant. Just like the U.S. Embassy visa fee is paid separately for each applicant, our service fee also applies to each individual applicant. If four family members are applying together, the service fee will be calculated for all four applicants. Payment is required only after the visa appointment has been successfully booked.",
+  },
+  {
     question: "Are there any hidden charges?",
     answer:
       "No. We maintain a transparent pricing policy. Any applicable fees are clearly explained before you proceed.",
@@ -411,6 +416,8 @@ export const finalCtaContent = {
 export const footerContent = {
   description:
     "Visa Mate is an independent visa consultancy providing USA B1/B2 tourist and business visa guidance, DS-160 preparation, and interview readiness support.",
+  address:
+    "1st Floor, Vistar G, Sumer Nagar, near Guddu Paradise, Manyawas, Block, Mansarovar, Jaipur, Rajasthan 302020",
 };
 
 export const legalLinks = [
