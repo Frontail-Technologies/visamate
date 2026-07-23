@@ -8,7 +8,7 @@ import { useReducedMotion } from "framer-motion";
  * Freezes on index 0 when the user prefers reduced motion, or when
  * there's nothing to cycle through.
  */
-export function useImageCycle(length: number, holdMs: number = 7000) {
+export function useImageCycle(length: number, holdMs: number = 5000) {
   const prefersReducedMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
 

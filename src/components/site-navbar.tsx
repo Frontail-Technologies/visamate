@@ -41,7 +41,7 @@ export function SiteNavbar() {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="mx-auto flex h-24 max-w-340 items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-20 max-w-340 items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8"
       >
         <motion.div variants={fadeUp}>
           <Link
@@ -60,7 +60,10 @@ export function SiteNavbar() {
           </Link>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="hidden items-center gap-10 lg:flex">
+        <motion.div
+          variants={fadeUp}
+          className="hidden items-center gap-10 lg:flex"
+        >
           {navigationItems.map((link) => (
             <Link
               key={link.href}
@@ -74,14 +77,21 @@ export function SiteNavbar() {
 
         <motion.div variants={fadeUp} className="hidden lg:flex">
           <Button asChild size="lg">
-            <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MessageCircle className="size-4" />
               Apply on WhatsApp
             </a>
           </Button>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="ml-auto flex items-center gap-2 lg:hidden">
+        <motion.div
+          variants={fadeUp}
+          className="ml-auto flex items-center gap-2 lg:hidden"
+        >
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}

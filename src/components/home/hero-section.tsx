@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -10,7 +10,11 @@ import {
 } from "framer-motion";
 import { ChevronDown, MessageCircle } from "lucide-react";
 
-import { buildWhatsAppLink, heroBackgroundImages, heroContent } from "@/data/visa-mate";
+import {
+  buildWhatsAppLink,
+  heroBackgroundImages,
+  heroContent,
+} from "@/data/visa-mate";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion-variants";
 import { Button } from "@/components/ui/button";
 import { useFinePointer } from "@/hooks/use-fine-pointer";
@@ -19,6 +23,13 @@ import { useImageCycle } from "@/hooks/use-image-cycle";
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const activeIndex = useImageCycle(heroBackgroundImages.length);
+
+  const [prevActiveIndex, setPrevActiveIndex] = useState(activeIndex);
+  const [maxShownIndex, setMaxShownIndex] = useState(activeIndex);
+  if (activeIndex !== prevActiveIndex) {
+    setPrevActiveIndex(activeIndex);
+    setMaxShownIndex((prev) => Math.max(prev, activeIndex));
+  }
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -34,27 +45,35 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       id="top"
-      className="relative isolate flex min-h-[95vh] items-center overflow-hidden bg-brand-navy text-white sm:min-h-screen"
+      className="relative isolate mt-16 flex min-h-[95vh] items-center overflow-hidden bg-brand-navy text-white sm:min-h-screen"
     >
       <motion.div
         className="absolute inset-x-0"
-        style={{ top: "-15%", height: "115%", y: parallaxActive ? rawParallaxY : 0 }}
+        style={{
+          top: "-15%",
+          height: "115%",
+          y: parallaxActive ? rawParallaxY : 0,
+        }}
       >
         {heroBackgroundImages.map((image, index) => (
           <motion.div
             key={image.src}
             className="absolute inset-0"
+            initial={{ opacity: index === 0 ? 1 : 0 }}
             animate={{ opacity: index === activeIndex ? 1 : 0 }}
             transition={{ duration: 1.8, ease: "easeInOut" }}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover md:object-right object-center"
-            />
+            {index <= maxShownIndex && (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                priority={index === 0}
+                quality={90}
+                sizes="100vw"
+                className="object-cover md:object-right object-center"
+              />
+            )}
           </motion.div>
         ))}
       </motion.div>

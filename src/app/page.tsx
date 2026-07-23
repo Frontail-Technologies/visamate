@@ -4,6 +4,7 @@ import { PricingStatementSection } from "@/components/home/pricing-statement-sec
 import { PaymentStructureSection } from "@/components/home/payment-structure-section";
 import { ProcessSection } from "@/components/home/process-section";
 import { WhyChooseSection } from "@/components/home/why-choose-section";
+import { ReviewsSection } from "@/components/home/reviews-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { EnquirySection } from "@/components/home/enquiry-section";
 import { FinalCtaSection } from "@/components/home/final-cta-section";
@@ -35,6 +36,7 @@ export default function Home() {
         <PaymentStructureSection />
         <ProcessSection />
         <WhyChooseSection />
+        <ReviewsSection />
         <FaqSection />
         <EnquirySection />
         <FinalCtaSection />

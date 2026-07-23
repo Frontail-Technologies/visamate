@@ -36,12 +36,32 @@ export type HeroBackgroundImage = {
 // Add more entries here to extend the hero's background cycle — no other code changes needed.
 export const heroBackgroundImages: HeroBackgroundImage[] = [
   {
-    src: "/images/hero-bg.jpeg",
+    src: "/images/hero/golden-gate-bridge-dusk.png",
     alt: "The Golden Gate Bridge in San Francisco at dusk",
   },
   {
-    src: "/images/hero.png",
+    src: "/images/hero/statue-of-liberty-nyc-skyline.png",
+    alt: "The Statue of Liberty with the New York City skyline at dusk",
+  },
+  {
+    src: "/images/hero/manhattan-skyline-dusk.png",
+    alt: "The Lower Manhattan skyline and One World Trade Center at dusk",
+  },
+  {
+    src: "/images/hero/us-capitol-washington-dc.png",
+    alt: "The U.S. Capitol Building in Washington, D.C. at dusk",
+  },
+  {
+    src: "/images/hero/airport-terminal-dusk.png",
+    alt: "A modern airport terminal with aircraft at dusk",
+  },
+  {
+    src: "/images/hero/office-building-us-flags-dusk.png",
     alt: "A modern glass office building with U.S. flags at dusk, representing a professional visa consultancy",
+  },
+  {
+    src: "/images/hero/taj-mahal-dawn.png",
+    alt: "The Taj Mahal in India at dawn",
   },
 ];
 
@@ -311,6 +331,76 @@ export const whyChooseSection = {
     },
   ] satisfies WhyChoosePoint[],
 };
+
+export type ReviewItem = {
+  name: string;
+  timeAgo: string;
+  reviewCount: string;
+  text: string;
+};
+
+export const reviewsSection = {
+  label: "Reviews",
+  heading: "What our clients say",
+  subheading: "Real reviews from applicants we've guided through their USA B1/B2 visa journey.",
+};
+
+export const reviews: ReviewItem[] = [
+  {
+    name: "Komal kok",
+    timeAgo: "3 weeks ago",
+    reviewCount: "2 reviews",
+    text: "Visa mate ki service kafi theek hai agar aap b1b2 visa appointment ke liye dekh rahe hai toh, mujhe inhone 10 days ke andar hi appointment provide kra di thi, payment bhi appointment ke baad liya tha, I'm 100% satisfied with visa mate service",
+  },
+  {
+    name: "naveen jangid",
+    timeAgo: "a month ago",
+    reviewCount: "3 reviews",
+    text: "I am extremely satisfied with the service provided by Visa Mate. Their team was knowledgeable, responsive, and supportive throughout my B1/B2 visa application process. They assisted me with the DS-160 form, document preparation, and interview guidance, ensuring every detail was handled correctly. I highly recommend Visa Mate to anyone looking for reliable and professional visa assistance.",
+  },
+  {
+    name: "Rahul Sharma",
+    timeAgo: "a month ago",
+    reviewCount: "1 review",
+    text: "Excellent Visa Consultancy service in jaipur. The VisaMate team is professional, supportive, and makes the entire visa process smooth and hassle-free.",
+  },
+  {
+    name: "Mannan Khan",
+    timeAgo: "5 months ago",
+    reviewCount: "1 review",
+    text: "Got my USA B1/B2 visa in just 27 days with Visa Mate. Smooth process, clear guidance, no false promises. Extremely happy with the service… and once again thank u so much Aenu sir",
+  },
+  {
+    name: "Puneet Arora",
+    timeAgo: "11 months ago",
+    reviewCount: "19 reviews",
+    text: "I'm Punit Arora from Delhi. I applied for my mother's U.S. visa through Visa Mate, and today I'm so happy to share that her visa got approved! I was nervous in the beginning, but the Visa Mate team handled everything so smoothly and guided me at every step. Their service is phenomenal! If you're planning for a U.S. visa, I highly recommend Visa Mate — you can trust them with your eyes closed!",
+  },
+  {
+    name: "Mohammad Gazi",
+    timeAgo: "10 months ago",
+    reviewCount: "3 reviews",
+    text: "I had an amazing experience with Visa Mate! They guided me step by step through the entire B1/B2 visa process - from filling out the DS-160, preparing documents, to mock interviews. Their team made everything simple and stress-free. Thanks to their support, my visa got approved smoothly. Highly recommend Visa Mate if you want a professional and trustworthy service…",
+  },
+  {
+    name: "Gagandeep Singh",
+    timeAgo: "a year ago",
+    reviewCount: "3 reviews",
+    text: "Commendable services, the team has rescheduled my visa appointment and reduced the waiting time from 1 year to only 1 month. They also provide mock interview preparation that gives confidence and also help in preparing the documentation.",
+  },
+  {
+    name: "Harshit Singhal",
+    timeAgo: "9 months ago",
+    reviewCount: "1 review",
+    text: "Great experience! They helped with DS-160, appointments, and interview prep very nice service",
+  },
+  {
+    name: "Sahil Khan lovely",
+    timeAgo: "10 months ago",
+    reviewCount: "3 reviews",
+    text: "My name is sahil I applied my parents USA visa and Visa got approved. I'm very happy with the Visa Mate service very helpful staff… Thank you Aenu sir",
+  },
+];
 
 export const finalCtaContent = {
   heading: "Ready to Start Your USA Visa Application?",
