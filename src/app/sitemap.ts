@@ -1,13 +1,10 @@
 import type { MetadataRoute } from "next";
 
 import { whyChooseSection } from "@/data/visa-mate";
-import { getBlogSlugs } from "@/sanity/blog";
 
 const siteUrl = "https://visamate.co.in";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogSlugs = await getBlogSlugs();
-
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: siteUrl, changeFrequency: "weekly", priority: 1 },
     {
@@ -42,11 +39,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${siteUrl}/blog/${slug}`,
-    changeFrequency: "monthly",
-    priority: 0.5,
-  }));
-
-  return [...staticRoutes, ...whyVisaMateRoutes, ...blogRoutes];
+  return [...staticRoutes, ...whyVisaMateRoutes];
 }
