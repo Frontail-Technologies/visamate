@@ -24,7 +24,7 @@ export default async function Image() {
           alignItems: "center",
           justifyContent: "center",
           background:
-            "radial-gradient(circle at 25% 20%, #0F5C96 0%, #071827 45%), radial-gradient(circle at 80% 85%, #711731 0%, #071827 55%)",
+            "radial-gradient(circle at 20% 15%, rgba(15,92,150,0.08) 0%, rgba(247,248,250,0) 45%), radial-gradient(circle at 85% 90%, rgba(113,23,49,0.08) 0%, rgba(247,248,250,0) 45%), #F7F8FA",
           padding: "80px",
         }}
       >
@@ -35,7 +35,7 @@ export default async function Image() {
             marginTop: 48,
             fontSize: 52,
             fontWeight: 700,
-            color: "#ffffff",
+            color: "#071827",
             textAlign: "center",
             lineHeight: 1.15,
             maxWidth: 880,
@@ -47,7 +47,7 @@ export default async function Image() {
           style={{
             marginTop: 28,
             fontSize: 28,
-            color: "rgba(255,255,255,0.75)",
+            color: "#667085",
             textAlign: "center",
           }}
         >

@@ -13,6 +13,7 @@ export function buildWhatsAppLink(message: string = whatsappMessage) {
 export const navigationItems = [
   { label: "Payment Structure", href: "/#payment-structure" },
   { label: "How It Works", href: "/#how-it-works" },
+  { label: "Document Checklist", href: "/document-checklist" },
   { label: "FAQ", href: "/#faq" },
   { label: "Contact", href: "/#contact" },
   // { label: "Terms", href: "/terms-and-conditions" },
