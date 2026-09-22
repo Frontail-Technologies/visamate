@@ -101,7 +101,7 @@ export const paymentSteps: PaymentStep[] = [
     number: "02",
     title: "Visa Mate Case Registration Fee",
     supportingLabel: "Processing Fee",
-    amount: "₹2,500",
+    amount: "₹3,000",
     secondaryAmount: "One-Time Fee",
     description: "This fee officially activates your visa case with Visa Mate.",
     includes: [
@@ -212,7 +212,8 @@ export const faqItems: FaqItem[] = [
       "Our professional service fee is payable only after your visa appointment has been successfully booked. This reflects our commitment to transparency and client trust.",
   },
   {
-    question: "Is your service fee for the entire family or for each applicant?",
+    question:
+      "Is your service fee for the entire family or for each applicant?",
     answer:
       "Our service fee is charged per applicant. Just like the U.S. Embassy visa fee is paid separately for each applicant, our service fee also applies to each individual applicant. If four family members are applying together, the service fee will be calculated for all four applicants. Payment is required only after the visa appointment has been successfully booked.",
   },
@@ -230,7 +231,10 @@ export const faqItems: FaqItem[] = [
     question: "What documents are required for a USA B1/B2 Visa?",
     answer:
       "The required documents vary depending on your profile. Our team provides a personalized checklist based on your employment, business, travel history, and purpose of travel.",
-    link: { label: "View the full document checklist", href: "/document-checklist" },
+    link: {
+      label: "View the full document checklist",
+      href: "/document-checklist",
+    },
   },
   {
     question: "Do you help with the DS-160 application?",
@@ -298,7 +302,13 @@ export const documentChecklistSections: DocumentChecklistSection[] = [
   {
     id: "us-contact",
     title: "3. U.S. Contact",
-    items: ["Contact name", "Hotel/Organization", "U.S. address", "Phone", "Email"],
+    items: [
+      "Contact name",
+      "Hotel/Organization",
+      "U.S. address",
+      "Phone",
+      "Email",
+    ],
   },
   {
     id: "family-information",
@@ -458,7 +468,8 @@ export type ReviewItem = {
 export const reviewsSection = {
   label: "Reviews",
   heading: "What our clients say",
-  subheading: "Real reviews from applicants we've guided through their USA B1/B2 visa journey.",
+  subheading:
+    "Real reviews from applicants we've guided through their USA B1/B2 visa journey.",
 };
 
 export const reviews: ReviewItem[] = [

@@ -22,7 +22,7 @@ export function OrganizationJsonLd() {
         telephone: "+91-89552-29807",
         email: "askvisamate@gmail.com",
         areaServed: "IN",
-        priceRange: "₹2,500 - ₹20,000",
+        priceRange: "₹3,000 - ₹20,000",
         address: {
           "@type": "PostalAddress",
           streetAddress:

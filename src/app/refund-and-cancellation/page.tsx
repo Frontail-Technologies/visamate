@@ -25,10 +25,10 @@ export default function RefundAndCancellationPage() {
       sections={[
         {
           id: "processing-fee",
-          title: "1. Processing Fee (₹2,500)",
+          title: "1. Processing Fee (₹3,000)",
           body: (
             <p>
-              The ₹2,500 Case Registration / Processing Fee is generally
+              The ₹3,000 Case Registration / Processing Fee is generally
               non-refundable, as it covers the initial profile assessment,
               case registration, dedicated case manager assignment,
               personalized document checklist, and visa strategy
